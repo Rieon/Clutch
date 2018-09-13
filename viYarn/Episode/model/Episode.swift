@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct EpisodeMO{
+struct Episode{
     
-    var num:Int
-    var title:String
-    var desc:String
-    var isActive:Bool
-    var progressCompleate:Int
+    let num:Int
+    let title:String
+    let desc:String
+    let isActive:Bool
+    let progressCompleate:Int
     
 }

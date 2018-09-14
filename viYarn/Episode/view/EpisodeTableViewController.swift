@@ -8,24 +8,17 @@
 
 import UIKit
 
-class EpisodeTableViewController: UITableViewController,EpisodeDelegate {
+class EpisodeTableViewController: UITableViewController {
     
-    let arr:[Episode] = [
-        Episode(num: 1, title: "Episode 1", desc: "A modern take on the classic novel", isActive: true, progressCompleate: 100),
-        Episode(num: 2, title: "Episode 2", desc: "the party.", isActive: true, progressCompleate: 20),
-        Episode(num: 3, title: "Episode 3", desc: "the party 3", isActive: true, progressCompleate: 10),
-        Episode(num: 4, title: "Episode 3", desc: "the party 4", isActive: true, progressCompleate: 5),
-        Episode(num: 4, title: "Episode 4", desc: "the party 4", isActive: false, progressCompleate: 0)
-        
-    ]
-    
-    let colorBackground:UIColor = #colorLiteral(red: 0.09803921569, green: 0.1215686275, blue: 0.1568627451, alpha: 1)
+    let arr = ["Desctiption1", "Desctiption2"]
+
+    let colorBackground: UIColor = #colorLiteral(red: 0.09803921569, green: 0.1215686275, blue: 0.1568627451, alpha: 1)
     
     override func viewDidLoad() {
         
         
         super.viewDidLoad()
-        tableView.register(EpisodeTableViewCell.self, forCellReuseIdentifier: EpisodeTableViewCell.CELL_KEY)
+        tableView.register(EpisodeTableViewCell.self, forCellReuseIdentifier: EpisodeTableViewCell.cellID)
         tableView.backgroundColor = colorBackground
         view.backgroundColor = colorBackground
         tableView.separatorStyle = .none
@@ -51,29 +44,17 @@ class EpisodeTableViewController: UITableViewController,EpisodeDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell:EpisodeTableViewCell = tableView.dequeueReusableCell(withIdentifier: EpisodeTableViewCell.CELL_KEY) as? EpisodeTableViewCell
-        {
-            cell.delegate = self
-            cell.setData(data: arr[indexPath.row])
-            cell.backgroundColor = colorBackground
-            cell.selectionStyle = .none
-            return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: EpisodeTableViewCell.cellID) as? EpisodeTableViewCell {
+            return cell.configured(for: indexPath.row, with: arr[indexPath.row])
         }
         
         return UITableViewCell()
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
+
     @objc func onClickDone(){
         
     }
-    
-    func onRestoreBtn(obj: Episode) {
-        print(obj.num)
-    }
+
     
 }
 

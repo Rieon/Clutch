@@ -11,7 +11,8 @@ import UIKit
 class ProgressBarView: UIView {
 
     var progress = UIView()
-    var progressConstrain = NSLayoutConstraint()
+    var progressWidthAnchor: NSLayoutConstraint?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -25,15 +26,15 @@ class ProgressBarView: UIView {
         progress.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         progress.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         progress.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        
-        
+        progressWidthAnchor = progress.widthAnchor.constraint(equalToConstant: 0)
+        progressWidthAnchor?.isActive = true
     }
     
-    func setProgress(value:Int){
-        if value == 0 { return }
-        
-        let res: CGFloat = CGFloat(value) / 100
-        NSLayoutConstraint(item: progress, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: res, constant: 0).isActive = true
+    func setProgress(to progress: CGFloat, fromWidth width: CGFloat){
+        progressWidthAnchor?.constant = width * progress
+        UIView.animate(withDuration: 0.2) { [unowned self] in
+            self.layoutIfNeeded()
+        }
         
     }
     required init?(coder aDecoder: NSCoder) {

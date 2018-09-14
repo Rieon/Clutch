@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let rootViewController = EpisodeTableViewController(nibName: nil, bundle: nil)
-        window?.rootViewController = UINavigationController(rootViewController: rootViewController)
+        let rootViewController = EpisodeTableViewController()
+        window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
         return true
     }

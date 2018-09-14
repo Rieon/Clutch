@@ -8,29 +8,46 @@
 
 import UIKit
 
-protocol EpisodeDelegate:class {
-    func onRestoreBtn(obj:Episode)
-}
 
 class EpisodeTableViewCell: UITableViewCell {
 
-    static let CELL_KEY = "episode"
+    static let cellID = "episode"
     
-    let txtTitle = UILabel()
-    let txtDesc = UILabel()
+    let txtTitle: UILabel = {
+        let txt = UILabel()
+        txt.textColor = #colorLiteral(red: 1, green: 0, blue: 0.4588235294, alpha: 1)
+        txt.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        txt.translatesAutoresizingMaskIntoConstraints = false
+        return txt
+    }()
+    let txtDesc: UILabel = {
+        let txt = UILabel()
+        txt.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        txt.font = UIFont.systemFont(ofSize: 13, weight: .medium)
+        txt.translatesAutoresizingMaskIntoConstraints = false
+        return txt
+    }()
+    
     let radiusButton: CGFloat = 30
-    let containerInfo = UIView()
-    let progressLine = ProgressBarView()
-    var episode: Episode?
+    let containerInfo: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
-    weak var delegate:EpisodeDelegate?
-    
+    let progressLine: ProgressBarView = {
+        let view = ProgressBarView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+
     lazy var btnRestore: UIButton = {
         let btn = UIButton()
-        btn.frame = CGRect(x: 0, y: 0, width: radiusButton, height: radiusButton)
         btn.layer.cornerRadius = 0.5 * radiusButton
         btn.clipsToBounds = true
-        btn.addTarget(self, action: #selector(onClickRestore), for: .touchUpInside)
+        btn.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0.4588235294, alpha: 1)
+        btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
     
@@ -40,15 +57,16 @@ class EpisodeTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        btnRestore.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0.4588235294, alpha: 1)
-        btnRestore.translatesAutoresizingMaskIntoConstraints = false
+        self.backgroundColor = #colorLiteral(red: 0.09803921569, green: 0.1215686275, blue: 0.1568627451, alpha: 1)
+        self.selectionStyle = .none
+        
+        
         contentView.addSubview(btnRestore)
         btnRestore.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor, constant: 13).isActive = true
         btnRestore.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
         btnRestore.widthAnchor.constraint(equalToConstant: radiusButton).isActive = true
         btnRestore.heightAnchor.constraint(equalToConstant: radiusButton).isActive = true
         
-        containerInfo.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(containerInfo)
         
         containerInfo.topAnchor.constraint(equalTo: self.topAnchor, constant: 3).isActive = true
@@ -56,10 +74,6 @@ class EpisodeTableViewCell: UITableViewCell {
         containerInfo.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12).isActive = true
         containerInfo.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 5).isActive = true
         
-        
-        txtTitle.textColor = #colorLiteral(red: 1, green: 0, blue: 0.4588235294, alpha: 1)
-        txtTitle.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        txtTitle.translatesAutoresizingMaskIntoConstraints = false
         containerInfo.addSubview(txtTitle)
         
         txtTitle.topAnchor.constraint(equalTo: containerInfo.topAnchor, constant: 0).isActive = true
@@ -67,9 +81,6 @@ class EpisodeTableViewCell: UITableViewCell {
         txtTitle.leftAnchor.constraint(equalTo: containerInfo.leftAnchor, constant: 0).isActive = true
         txtTitle.rightAnchor.constraint(equalTo: containerInfo.rightAnchor, constant: 0).isActive = true
         
-        txtDesc.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        txtDesc.font = UIFont.systemFont(ofSize: 13, weight: .medium)
-        txtDesc.translatesAutoresizingMaskIntoConstraints = false
         containerInfo.addSubview(txtDesc)
         
         txtDesc.topAnchor.constraint(equalTo: txtTitle.bottomAnchor, constant: 0).isActive = true
@@ -78,48 +89,28 @@ class EpisodeTableViewCell: UITableViewCell {
         txtDesc.rightAnchor.constraint(equalTo: containerInfo.rightAnchor, constant: 0).isActive = true
         
         
-        progressLine.translatesAutoresizingMaskIntoConstraints = false
         containerInfo.addSubview(progressLine)
         progressLine.topAnchor.constraint(equalTo: txtDesc.bottomAnchor, constant: 3).isActive = true
         progressLine.heightAnchor.constraint(equalToConstant: 2).isActive = true
         progressLine.leftAnchor.constraint(equalTo: containerInfo.leftAnchor, constant: 0).isActive = true
         progressLine.rightAnchor.constraint(equalTo: containerInfo.rightAnchor, constant: 0).isActive = true
         
-        
+        layoutIfNeeded()
         
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    func setData(data:Episode){
-        self.episode  = data
-        txtTitle.text = data.title
-        txtDesc.text = data.desc
+    func configured(for index: Int, with episode: String) -> EpisodeTableViewCell{
+        txtTitle.text = "Episdoe \(index)"
+        txtDesc.text = episode
         
-        progressLine.setProgress(value: data.progressCompleate)
+        progressLine.setProgress(to: 0.1, fromWidth: containerInfo.bounds.width)
+
         
-        if data.progressCompleate > 0{
-            btnRestore.setImage(#imageLiteral(resourceName: "reload"), for: .normal)
-        }else{
-            btnRestore.setImage(#imageLiteral(resourceName: "play"), for: .normal)
-        }
-        btnRestore.tintColor = .white
-        
-        contentView.alpha = data.isActive ? 1 : 0.5
-        
-        
-    }
-    
-    @objc func onClickRestore(){
-        guard let episode = self.episode else {
-            return
-        }
-        delegate?.onRestoreBtn(obj: episode)
+        return self
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
 
 }

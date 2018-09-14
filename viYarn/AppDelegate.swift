@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let rootViewController = EpisodeTableViewController()
+        let rootViewController = StoryViewController()
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
         return true

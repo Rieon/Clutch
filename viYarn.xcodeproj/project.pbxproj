@@ -18,6 +18,7 @@
 		0AED5DA6214A816C008AF775 /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5DA5214A816C008AF775 /* EpisodeTableViewCell.swift */; };
 		0AED5DAF214AB6B2008AF775 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5DAE214AB6B2008AF775 /* CircleButton.swift */; };
 		0AED5DB1214AB9E3008AF775 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5DB0214AB9E3008AF775 /* ProgressBarView.swift */; };
+		0AED5DB9214C4450008AF775 /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5DB8214C4450008AF775 /* StoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		0AED5DA5214A816C008AF775 /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
 		0AED5DAE214AB6B2008AF775 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		0AED5DB0214AB9E3008AF775 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		0AED5DB8214C4450008AF775 /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		0AED5D6E214A80B2008AF775 /* viYarn */ = {
 			isa = PBXGroup;
 			children = (
+				0AED5DB2214C2B3E008AF775 /* Story */,
 				0AED5DA0214A80C6008AF775 /* Episode */,
 				0AED5D6F214A80B2008AF775 /* AppDelegate.swift */,
 				0AED5D71214A80B2008AF775 /* ViewController.swift */,
@@ -149,6 +152,22 @@
 				0AED5DA5214A816C008AF775 /* EpisodeTableViewCell.swift */,
 				0AED5DAE214AB6B2008AF775 /* CircleButton.swift */,
 				0AED5DB0214AB9E3008AF775 /* ProgressBarView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0AED5DB2214C2B3E008AF775 /* Story */ = {
+			isa = PBXGroup;
+			children = (
+				0AED5DB5214C2DF5008AF775 /* view */,
+			);
+			path = Story;
+			sourceTree = "<group>";
+		};
+		0AED5DB5214C2DF5008AF775 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0AED5DB8214C4450008AF775 /* StoryViewController.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -285,6 +304,7 @@
 			files = (
 				0AED5DAF214AB6B2008AF775 /* CircleButton.swift in Sources */,
 				0AED5D78214A80B3008AF775 /* viYarn.xcdatamodeld in Sources */,
+				0AED5DB9214C4450008AF775 /* StoryViewController.swift in Sources */,
 				0AED5D72214A80B2008AF775 /* ViewController.swift in Sources */,
 				0AED5DA3214A8122008AF775 /* EpisodeTableViewController.swift in Sources */,
 				0AED5DA6214A816C008AF775 /* EpisodeTableViewCell.swift in Sources */,

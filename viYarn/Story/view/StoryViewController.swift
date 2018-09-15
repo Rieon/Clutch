@@ -11,7 +11,6 @@ import UIKit
 class StoryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout{
     
     let cellID = "CellId"
-    var storyCollectionView: UICollectionView!
     let colorBackground: UIColor = #colorLiteral(red: 0.09803921569, green: 0.1215686275, blue: 0.1568627451, alpha: 1)
 
     override func viewDidLoad() {
@@ -19,7 +18,6 @@ class StoryViewController: UICollectionViewController, UICollectionViewDelegateF
         
         collectionView?.backgroundColor = colorBackground
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,9 +25,8 @@ class StoryViewController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let screenSize = UIScreen.main.bounds
-        let cellWidth: CGFloat = screenSize.width * 0.9
-        let cellHeight: CGFloat = screenSize.height * 0.7
+        let cellWidth: CGFloat =  view.bounds.width * 0.9
+        let cellHeight: CGFloat =  view.bounds.height * 0.7
         return CGSize(width: cellWidth, height: cellHeight)
         
     }

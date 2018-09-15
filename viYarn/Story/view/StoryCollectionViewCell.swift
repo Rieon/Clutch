@@ -10,7 +10,7 @@ import UIKit
 
 class StoryCollectionViewCell: UICollectionViewCell {
     
-    static let cellID = "episode"
+    static let cellID = "story"
     
     let imgPreview: UIImageView = {
         let image = UIImageView()
@@ -124,7 +124,6 @@ class StoryCollectionViewCell: UICollectionViewCell {
         containerInfo.topAnchor.constraint(equalTo: self.topAnchor, constant: 200).isActive = true
         containerInfo.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
         containerInfo.heightAnchor.constraint(equalToConstant: 200).isActive = true
-//        contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         containerInfo.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
         
         containerInfo.addSubview(txtCountView)

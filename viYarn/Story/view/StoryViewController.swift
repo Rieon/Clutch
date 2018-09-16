@@ -48,14 +48,15 @@ class StoryViewController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
-        let cellHeight = cellLayoutHeight + layout.minimumLineSpacing
-        
-        var offset = targetContentOffset.pointee
-        let index = (offset.y + scrollView.contentInset.top) / cellHeight
-        let rounded = round(index)
-        
-        targetContentOffset.pointee = CGPoint(x: scrollView.contentInset.left, y: rounded * cellHeight - scrollView.contentInset.top)
+        if let layout = self.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout{
+            let cellHeight = cellLayoutHeight + layout.minimumLineSpacing
+            
+            let offset = targetContentOffset.pointee
+            let index = (offset.y + scrollView.contentInset.top) / cellHeight
+            let rounded = round(index)
+            
+            targetContentOffset.pointee = CGPoint(x: scrollView.contentInset.left, y: rounded * cellHeight - scrollView.contentInset.top)
+        }
     }
 
 }

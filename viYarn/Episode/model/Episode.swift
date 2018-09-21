@@ -9,9 +9,9 @@
 import Foundation
 
 
-struct Episode{
+struct Episode {
     
-    var title: String
-    var description: String
+    let title: String
+    let description: String
     
 }

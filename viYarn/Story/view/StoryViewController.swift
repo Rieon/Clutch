@@ -24,7 +24,6 @@ class StoryViewController: UICollectionViewController, UICollectionViewDelegateF
         
         collectionView?.backgroundColor = colorBackground
         collectionView?.register(StoryCollectionViewCell.self, forCellWithReuseIdentifier: StoryCollectionViewCell.cellID)
-        collectionView?.contentInset.top = (self.view.bounds.height - cellLayoutHeight) / 2
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,17 +46,7 @@ class StoryViewController: UICollectionViewController, UICollectionViewDelegateF
         return UICollectionViewCell()
     }
     
-    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if let layout = self.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout{
-            let cellHeight = cellLayoutHeight + layout.minimumLineSpacing
-            
-            let offset = targetContentOffset.pointee
-            let index = (offset.y + scrollView.contentInset.top) / cellHeight
-            let rounded = round(index)
-            
-            targetContentOffset.pointee = CGPoint(x: scrollView.contentInset.left, y: rounded * cellHeight - scrollView.contentInset.top)
-        }
-    }
+
 
 }
 

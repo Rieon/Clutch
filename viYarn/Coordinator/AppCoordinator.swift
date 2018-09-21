@@ -18,14 +18,15 @@ class AppCoordinator: NSObject {
         self.window = window
     }
     func initFlow() {
-        let layout = UICollectionViewFlowLayout()
-        let storyController = StoryViewController(didTapEpisode: { [unowned self] in self.episodeScreenSelected() }, layout: layout)
+        let storyViewModel = MockStoryViewModel(didTapEpisode: { [unowned self] in self.episodeScreenSelected() })
+        let storyController = StoryViewController(viewModel: storyViewModel)
         navController = UINavigationController(rootViewController: storyController)
         window.rootViewController = navController
     }
     
     func episodeScreenSelected() {
         let viewModel = MockEpisodeViewModel()
+        navController?.setNavigationBarHidden(false, animated: true)
         navController?.pushViewController(EpisodeViewController(viewModel: viewModel), animated: true)
     }
 }

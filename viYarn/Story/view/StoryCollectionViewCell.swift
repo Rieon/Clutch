@@ -12,6 +12,8 @@ class StoryCollectionViewCell: UICollectionViewCell {
     
     static let cellID = "story"
     
+    var didTapEpisodes: (() -> Void)?
+    
     let imgPreview: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -59,6 +61,7 @@ class StoryCollectionViewCell: UICollectionViewCell {
         btn.layer.cornerRadius = 0.5 * radiusButton
         btn.clipsToBounds = true
         btn.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        btn.addTarget(self, action: #selector(tapEpisodeList), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
@@ -178,7 +181,13 @@ class StoryCollectionViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     
-    func configured() -> StoryCollectionViewCell {
+    @objc func tapEpisodeList() {
+        didTapEpisodes?()
+    }
+    
+    func configured(with didTapEpisodes: (() -> Void)? = nil) -> StoryCollectionViewCell {
+        self.didTapEpisodes = didTapEpisodes
+        
         txtCountView.text = "304,1 k views"
         txtTitle.text = "Little Soldier Girl"
         txtEpisode.text = "Episode 1"
@@ -187,7 +196,6 @@ class StoryCollectionViewCell: UICollectionViewCell {
         txtTitleProgress.text = "Start Episode 1"
         
         viewProgressEpisode.setProgress(to: 0.4, fromWidth: viewProgressEpisode.bounds.width)
-        
         return self
     }
     

@@ -32,16 +32,23 @@ protocol StoryViewModelResponsibilities: UICollectionViewDelegate, UICollectionV
 
 class MockStoryViewModel: NSObject, StoryViewModelResponsibilities {
     weak var delegate: StoryLoaderDelagate?
-    
     var stories = [Story]()
+    
+    let didTapEpisode: () -> Void
+    
+    init(didTapEpisode: @escaping () -> Void) {
+        self.didTapEpisode = didTapEpisode
+        super.init()
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return stories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryCollectionViewCell.cellID, for: indexPath as IndexPath) as? StoryCollectionViewCell {
-            return cell.configured()
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryCollectionViewCell.cellID,
+                                                         for: indexPath as IndexPath) as? StoryCollectionViewCell {
+            return cell.configured(with: { [unowned self] in self.didTapEpisode() })
         }
         return UICollectionViewCell()
     }

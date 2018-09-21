@@ -10,18 +10,7 @@ import UIKit
 
 class StoryViewController: UIViewController, StoryLoaderDelagate {
     
-    
-    let didTapEpisode: () -> Void
-    
-    init(didTapEpisode: @escaping () -> Void, layout: UICollectionViewLayout) {
-        self.didTapEpisode = didTapEpisode
-        super.init(collectionViewLayout: layout)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     let colorBackground: UIColor = #colorLiteral(red: 0.09803921569, green: 0.1215686275, blue: 0.1568627451, alpha: 1)
     
     private var cellLayoutHeight: CGFloat {
@@ -39,7 +28,6 @@ class StoryViewController: UIViewController, StoryLoaderDelagate {
         
     }
     
-    
     lazy var storyCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: cellLayoutWidth, height: cellLayoutHeight)
@@ -52,7 +40,7 @@ class StoryViewController: UIViewController, StoryLoaderDelagate {
         return collection
     }()
     
-    var viewModel: StoryViewModelResponsibilities
+    let viewModel: StoryViewModelResponsibilities
     init(viewModel: StoryViewModelResponsibilities) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -62,7 +50,12 @@ class StoryViewController: UIViewController, StoryLoaderDelagate {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,10 +69,6 @@ class StoryViewController: UIViewController, StoryLoaderDelagate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-        
-    func selectEpisodes() {
-        didTapEpisode()
     }
 }
 

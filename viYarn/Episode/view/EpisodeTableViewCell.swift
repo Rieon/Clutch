@@ -102,9 +102,9 @@ class EpisodeTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
-    func configured(for index: Int, with episode: String) -> EpisodeTableViewCell{
-        txtTitle.text = "Episdoe \(index)"
-        txtDesc.text = episode
+    func configured(for index: Int, with episode: Episode) -> EpisodeTableViewCell{
+        txtTitle.text = episode.title
+        txtDesc.text = episode.description
         
         progressLine.setProgress(to: 0.1, fromWidth: containerInfo.bounds.width)
 

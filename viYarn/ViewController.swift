@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     }
     
     @objc func showEpisode(){
-        show(EpisodeTableViewController(), sender: self)
+//        show(EpisodeTableViewController(), sender: self)
     }
 
     override func didReceiveMemoryWarning() {

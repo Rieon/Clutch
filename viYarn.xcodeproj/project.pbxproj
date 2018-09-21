@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A37F5EB21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5EA21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift */; };
+		0A37F5ED215518F500FEA557 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5EC215518F500FEA557 /* Episode.swift */; };
 		0AED5D70214A80B2008AF775 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5D6F214A80B2008AF775 /* AppDelegate.swift */; };
 		0AED5D72214A80B2008AF775 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5D71214A80B2008AF775 /* ViewController.swift */; };
 		0AED5D78214A80B3008AF775 /* viYarn.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5D76214A80B3008AF775 /* viYarn.xcdatamodeld */; };
@@ -14,7 +16,7 @@
 		0AED5D7D214A80B9008AF775 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AED5D7B214A80B9008AF775 /* LaunchScreen.storyboard */; };
 		0AED5D88214A80B9008AF775 /* viYarnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5D87214A80B9008AF775 /* viYarnTests.swift */; };
 		0AED5D93214A80B9008AF775 /* viYarnUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5D92214A80B9008AF775 /* viYarnUITests.swift */; };
-		0AED5DA3214A8122008AF775 /* EpisodeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5DA2214A8122008AF775 /* EpisodeTableViewController.swift */; };
+		0AED5DA3214A8122008AF775 /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5DA2214A8122008AF775 /* EpisodeViewController.swift */; };
 		0AED5DA6214A816C008AF775 /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5DA5214A816C008AF775 /* EpisodeTableViewCell.swift */; };
 		0AED5DAF214AB6B2008AF775 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5DAE214AB6B2008AF775 /* CircleButton.swift */; };
 		0AED5DB1214AB9E3008AF775 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5DB0214AB9E3008AF775 /* ProgressBarView.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A37F5EA21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModelResponsibilities.swift; sourceTree = "<group>"; };
+		0A37F5EC215518F500FEA557 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		0AED5D6C214A80B2008AF775 /* viYarn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = viYarn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AED5D6F214A80B2008AF775 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AED5D71214A80B2008AF775 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,7 +57,7 @@
 		0AED5D8E214A80B9008AF775 /* viYarnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = viYarnUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AED5D92214A80B9008AF775 /* viYarnUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viYarnUITests.swift; sourceTree = "<group>"; };
 		0AED5D94214A80B9008AF775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0AED5DA2214A8122008AF775 /* EpisodeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewController.swift; sourceTree = "<group>"; };
+		0AED5DA2214A8122008AF775 /* EpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewController.swift; sourceTree = "<group>"; };
 		0AED5DA5214A816C008AF775 /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
 		0AED5DAE214AB6B2008AF775 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		0AED5DB0214AB9E3008AF775 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
@@ -86,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A37F5E921550B1400FEA557 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0A37F5EA21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift */,
+				0A37F5EC215518F500FEA557 /* Episode.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		0AED5D63214A80B2008AF775 = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +155,7 @@
 		0AED5DA0214A80C6008AF775 /* Episode */ = {
 			isa = PBXGroup;
 			children = (
+				0A37F5E921550B1400FEA557 /* model */,
 				0AED5DA1214A80FE008AF775 /* view */,
 			);
 			path = Episode;
@@ -150,7 +164,7 @@
 		0AED5DA1214A80FE008AF775 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				0AED5DA2214A8122008AF775 /* EpisodeTableViewController.swift */,
+				0AED5DA2214A8122008AF775 /* EpisodeViewController.swift */,
 				0AED5DA5214A816C008AF775 /* EpisodeTableViewCell.swift */,
 				0AED5DAE214AB6B2008AF775 /* CircleButton.swift */,
 				0AED5DB0214AB9E3008AF775 /* ProgressBarView.swift */,
@@ -310,7 +324,9 @@
 				0AED5DB9214C4450008AF775 /* StoryViewController.swift in Sources */,
 				0AED5D72214A80B2008AF775 /* ViewController.swift in Sources */,
 				0AED5DBE214D7C49008AF775 /* StoryCollectionViewCell.swift in Sources */,
-				0AED5DA3214A8122008AF775 /* EpisodeTableViewController.swift in Sources */,
+				0A37F5ED215518F500FEA557 /* Episode.swift in Sources */,
+				0AED5DA3214A8122008AF775 /* EpisodeViewController.swift in Sources */,
+				0A37F5EB21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift in Sources */,
 				0AED5DA6214A816C008AF775 /* EpisodeTableViewCell.swift in Sources */,
 				0AED5DB1214AB9E3008AF775 /* ProgressBarView.swift in Sources */,
 				0AED5D70214A80B2008AF775 /* AppDelegate.swift in Sources */,

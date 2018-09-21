@@ -8,14 +8,24 @@
 
 import UIKit
 
-class EpisodeTableViewController: UITableViewController {
+class EpisodeViewController: UIViewController, EpisodeLoaderDelagate {
     
-    let arr = ["Desctiption1", "Desctiption2"]
-
+    lazy var tableView: UITableView = {
+        let table:UITableView = UITableView()
+        table.delegate = viewModel
+        table.dataSource = viewModel
+        table.translatesAutoresizingMaskIntoConstraints = false
+        return table
+    }()
+    
+    var viewModel = MockEpisodeViewModel()
+    
     let colorBackground: UIColor = #colorLiteral(red: 0.09803921569, green: 0.1215686275, blue: 0.1568627451, alpha: 1)
     
     override func viewDidLoad() {
         
+        viewModel.delegate = self
+        viewModel.loadEpisode()
         
         super.viewDidLoad()
         tableView.register(EpisodeTableViewCell.self, forCellReuseIdentifier: EpisodeTableViewCell.cellID)
@@ -23,6 +33,7 @@ class EpisodeTableViewController: UITableViewController {
         view.backgroundColor = colorBackground
         tableView.separatorStyle = .none
         tableView.rowHeight = 70
+        
         
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = colorBackground
@@ -32,23 +43,25 @@ class EpisodeTableViewController: UITableViewController {
         title.font = UIFont.systemFont(ofSize: 19, weight: .medium)
         title.textAlignment = .center
         title.textColor = .white
+        
   
         let btnDone = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(onClickDone))
         btnDone.tintColor = .white
         navigationItem.rightBarButtonItem = btnDone
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arr.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: EpisodeTableViewCell.cellID) as? EpisodeTableViewCell {
-            return cell.configured(for: indexPath.row, with: arr[indexPath.row])
-        }
         
-        return UITableViewCell()
+        self.view.addSubview(tableView)
+        tableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+    }
+    
+    func didLoad() {
+        tableView.reloadData()
+    }
+    
+    func didFail() {
+        
     }
 
     @objc func onClickDone(){

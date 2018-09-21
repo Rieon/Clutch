@@ -12,12 +12,12 @@ class StoryViewController: UICollectionViewController, UICollectionViewDelegateF
     
     let colorBackground: UIColor = #colorLiteral(red: 0.09803921569, green: 0.1215686275, blue: 0.1568627451, alpha: 1)
     
-    private(set) lazy var cellLayoutHeight:CGFloat = {
-        return self.view.bounds.height * 0.7
-    }()
-    private(set) lazy var cellLayoutWidth:CGFloat = {
-        return self.view.bounds.width * 0.9
-    }()
+    private var cellLayoutHeight: CGFloat {
+        return view.bounds.height * 0.7
+    }
+    private var cellLayoutWidth: CGFloat {
+        return view.bounds.width * 0.9
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

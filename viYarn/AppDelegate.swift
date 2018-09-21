@@ -18,9 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow()
         window?.makeKeyAndVisible()
-        
-
-        
         coordinator = AppCoordinator(window: window!)
         coordinator?.initFlow()
         return true

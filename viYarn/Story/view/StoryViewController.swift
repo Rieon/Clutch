@@ -10,6 +10,18 @@ import UIKit
 
 class StoryViewController: UIViewController, StoryLoaderDelagate {
     
+    
+    let didTapEpisode: () -> Void
+    
+    init(didTapEpisode: @escaping () -> Void, layout: UICollectionViewLayout) {
+        self.didTapEpisode = didTapEpisode
+        super.init(collectionViewLayout: layout)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     let colorBackground: UIColor = #colorLiteral(red: 0.09803921569, green: 0.1215686275, blue: 0.1568627451, alpha: 1)
     
     private var cellLayoutHeight: CGFloat {
@@ -60,19 +72,15 @@ class StoryViewController: UIViewController, StoryLoaderDelagate {
         storyCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         storyCollectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         storyCollectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-        
-//        collectionView?.backgroundColor = colorBackground
-//        collectionView?.register(StoryCollectionViewCell.self, forCellWithReuseIdentifier: StoryCollectionViewCell.cellID)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    
-    
-
-
+        
+    func selectEpisodes() {
+        didTapEpisode()
+    }
 }
 
 

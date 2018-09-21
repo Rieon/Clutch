@@ -88,9 +88,6 @@ class StoryCollectionViewCell: UICollectionViewCell {
         return progress
     }()
     
-    
-    
-    
     let radiusButton: CGFloat = 40
     
     let containerInfo: UIView = {

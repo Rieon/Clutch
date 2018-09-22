@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		029B4586A7CD2FDA10F46832 /* Pods_viYarn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C409E32E628FFBD0A2F60B6 /* Pods_viYarn.framework */; };
 		0A37F5EB21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5EA21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift */; };
 		0A37F5ED215518F500FEA557 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5EC215518F500FEA557 /* Episode.swift */; };
 		0A37F5F021554F5D00FEA557 /* StoryViewModelResponsibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5EF21554F5D00FEA557 /* StoryViewModelResponsibilities.swift */; };
 		0A37F5F221554F6A00FEA557 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5F121554F6A00FEA557 /* Story.swift */; };
+		0A37F5F421564C8A00FEA557 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5F321564C8A00FEA557 /* Author.swift */; };
+		0A45329F2156656400D690E9 /* EpisodePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A45329E2156656400D690E9 /* EpisodePost.swift */; };
 		0AED5D70214A80B2008AF775 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5D6F214A80B2008AF775 /* AppDelegate.swift */; };
 		0AED5D78214A80B3008AF775 /* viYarn.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5D76214A80B3008AF775 /* viYarn.xcdatamodeld */; };
 		0AED5D7A214A80B9008AF775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AED5D79214A80B9008AF775 /* Assets.xcassets */; };
@@ -48,6 +51,8 @@
 		0A37F5EC215518F500FEA557 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		0A37F5EF21554F5D00FEA557 /* StoryViewModelResponsibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModelResponsibilities.swift; sourceTree = "<group>"; };
 		0A37F5F121554F6A00FEA557 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		0A37F5F321564C8A00FEA557 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
+		0A45329E2156656400D690E9 /* EpisodePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodePost.swift; sourceTree = "<group>"; };
 		0AED5D6C214A80B2008AF775 /* viYarn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = viYarn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AED5D6F214A80B2008AF775 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AED5D77214A80B3008AF775 /* viYarn.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = viYarn.xcdatamodel; sourceTree = "<group>"; };
@@ -66,7 +71,12 @@
 		0AED5DB0214AB9E3008AF775 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		0AED5DB8214C4450008AF775 /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 		0AED5DBD214D7C49008AF775 /* StoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		5055D08DED3762566D3A0E77 /* Pods-viYarn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-viYarn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-viYarn/Pods-viYarn.debug.xcconfig"; sourceTree = "<group>"; };
+		521643168C5BCA654E9960F8 /* Pods_viYarnTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_viYarnTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		604BC84012058CF5AA12F659 /* Pods_viYarnUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_viYarnUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C409E32E628FFBD0A2F60B6 /* Pods_viYarn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_viYarn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C25B1292155546000013D49 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		E5357BF00EBCBF522BA8057F /* Pods-viYarn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-viYarn.release.xcconfig"; path = "Pods/Target Support Files/Pods-viYarn/Pods-viYarn.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				029B4586A7CD2FDA10F46832 /* Pods_viYarn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +110,8 @@
 			children = (
 				0A37F5EA21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift */,
 				0A37F5EC215518F500FEA557 /* Episode.swift */,
+				0A37F5F321564C8A00FEA557 /* Author.swift */,
+				0A45329E2156656400D690E9 /* EpisodePost.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -119,6 +132,8 @@
 				0AED5D86214A80B9008AF775 /* viYarnTests */,
 				0AED5D91214A80B9008AF775 /* viYarnUITests */,
 				0AED5D6D214A80B2008AF775 /* Products */,
+				A8D0C29A64E7D981657C9BD4 /* Pods */,
+				27AC744A0AB701DF3467CF48 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -203,12 +218,31 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		27AC744A0AB701DF3467CF48 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C409E32E628FFBD0A2F60B6 /* Pods_viYarn.framework */,
+				521643168C5BCA654E9960F8 /* Pods_viYarnTests.framework */,
+				604BC84012058CF5AA12F659 /* Pods_viYarnUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9C25B1282155541000013D49 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
 				9C25B1292155546000013D49 /* AppCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		A8D0C29A64E7D981657C9BD4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5055D08DED3762566D3A0E77 /* Pods-viYarn.debug.xcconfig */,
+				E5357BF00EBCBF522BA8057F /* Pods-viYarn.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,9 +252,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0AED5D97214A80BA008AF775 /* Build configuration list for PBXNativeTarget "viYarn" */;
 			buildPhases = (
+				09B761455784B488FC1263B8 /* [CP] Check Pods Manifest.lock */,
 				0AED5D68214A80B2008AF775 /* Sources */,
 				0AED5D69214A80B2008AF775 /* Frameworks */,
 				0AED5D6A214A80B2008AF775 /* Resources */,
+				7DD4E60B32D9CF9F980087B9 /* [CP] Embed Pods Frameworks */,
+				E1FFD3680E6366B2F7A56F45 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -336,12 +373,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		09B761455784B488FC1263B8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-viYarn-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7DD4E60B32D9CF9F980087B9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-viYarn/Pods-viYarn-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-viYarn/Pods-viYarn-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E1FFD3680E6366B2F7A56F45 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-viYarn/Pods-viYarn-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0AED5D68214A80B2008AF775 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9C25B12A2155546000013D49 /* AppCoordinator.swift in Sources */,
+				0A45329F2156656400D690E9 /* EpisodePost.swift in Sources */,
 				0AED5DAF214AB6B2008AF775 /* CircleButton.swift in Sources */,
 				0AED5D78214A80B3008AF775 /* viYarn.xcdatamodeld in Sources */,
 				0AED5DB9214C4450008AF775 /* StoryViewController.swift in Sources */,
@@ -353,6 +445,7 @@
 				0A37F5EB21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift in Sources */,
 				0AED5DA6214A816C008AF775 /* EpisodeTableViewCell.swift in Sources */,
 				0AED5DB1214AB9E3008AF775 /* ProgressBarView.swift in Sources */,
+				0A37F5F421564C8A00FEA557 /* Author.swift in Sources */,
 				0AED5D70214A80B2008AF775 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,6 +609,7 @@
 		};
 		0AED5D98214A80BA008AF775 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5055D08DED3762566D3A0E77 /* Pods-viYarn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -534,6 +628,7 @@
 		};
 		0AED5D99214A80BA008AF775 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5357BF00EBCBF522BA8057F /* Pods-viYarn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2BCCE42156CC96008EE0CF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2BCCE32156CC96008EE0CF /* Alamofire.framework */; };
 		0A37F5EB21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5EA21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift */; };
 		0A37F5ED215518F500FEA557 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5EC215518F500FEA557 /* Episode.swift */; };
 		0A37F5F021554F5D00FEA557 /* StoryViewModelResponsibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5EF21554F5D00FEA557 /* StoryViewModelResponsibilities.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A2BCCE32156CC96008EE0CF /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		0A37F5EA21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModelResponsibilities.swift; sourceTree = "<group>"; };
 		0A37F5EC215518F500FEA557 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		0A37F5EF21554F5D00FEA557 /* StoryViewModelResponsibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModelResponsibilities.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A2BCCE42156CC96008EE0CF /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +97,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A2BCCE22156CC96008EE0CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0A2BCCE32156CC96008EE0CF /* Alamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0A37F5E921550B1400FEA557 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +130,7 @@
 				0AED5D86214A80B9008AF775 /* viYarnTests */,
 				0AED5D91214A80B9008AF775 /* viYarnUITests */,
 				0AED5D6D214A80B2008AF775 /* Products */,
+				0A2BCCE22156CC96008EE0CF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -221,6 +233,7 @@
 				0AED5D68214A80B2008AF775 /* Sources */,
 				0AED5D69214A80B2008AF775 /* Frameworks */,
 				0AED5D6A214A80B2008AF775 /* Resources */,
+				0A2BCCE52156CCA7008EE0CF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -335,6 +348,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A2BCCE52156CCA7008EE0CF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0AED5D68214A80B2008AF775 /* Sources */ = {
@@ -520,6 +550,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V6547YQW5R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = viYarn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -538,6 +572,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V6547YQW5R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = viYarn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -17,7 +17,7 @@ protocol EpisodeLoaderDelagate: class{
 
 protocol EpisodesViewModelResponsibilities: UITableViewDataSource, UITableViewDelegate {
     var delegate: EpisodeLoaderDelagate? {get set}
-    func loadEpisode(episodeID: Int)
+    func loadEpisode(storyID: Int)
 }
 
 
@@ -45,8 +45,8 @@ class MockEpisodeViewModel: NSObject, EpisodesViewModelResponsibilities {
         return UITableViewCell()
     }
     
-    func loadEpisode(episodeID: Int) {
-        networkProvider.episodes(withHost: host, episodeID: episodeID, success: { [unowned self] (loadedEpisodes) in
+    func loadEpisode(storyID: Int) {
+        networkProvider.episodes(withHost: host, storyID: storyID, success: { [unowned self] (loadedEpisodes) in
             if loadedEpisodes.isParsedSuccessfully {
             }
             self.episodes = loadedEpisodes
@@ -61,12 +61,12 @@ class MockEpisodeViewModel: NSObject, EpisodesViewModelResponsibilities {
 class EpisodeNetworkProvider {
     var currentRequest: DataRequest?
     
-    func episodes(withHost host: String, episodeID: Int, success: @escaping (Episode) -> Void, failure: @escaping () -> Void) {
+    func episodes(withHost host: String, storyID: Int, success: @escaping (Episode) -> Void, failure: @escaping () -> Void) {
         let url = host
         
         let parameters: Parameters = [
             "json": "core.get_posts",
-            "post_parent": "\(episodeID)",
+            "post_parent": "\(storyID)",
             "post_type": "clutch_episode",
             "dev": "1" ]
         currentRequest = Alamofire.request(url, parameters: parameters).responseString { (response) in

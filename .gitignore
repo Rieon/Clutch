@@ -1,0 +1,3 @@
+#ignore lib
+/Carthage/Checkouts/*
+/Carthage/Build/*

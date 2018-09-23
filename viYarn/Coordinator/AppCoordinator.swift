@@ -25,7 +25,7 @@ class AppCoordinator: NSObject {
     }
     
     func episodeScreenSelected() {
-        let viewModel = MockEpisodeViewModel(networkProvider: EpisodeNetworkProvider())
+        let viewModel = MockEpisodeViewModel()
         navController?.setNavigationBarHidden(false, animated: true)
         navController?.pushViewController(EpisodeViewController(viewModel: viewModel), animated: true)
     }

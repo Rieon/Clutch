@@ -10,26 +10,13 @@ import Foundation
 import UIKit
 import Alamofire
 
-protocol EpisodeLoaderDelagate: class{
-    func didLoadEpisodes()
-    func failLoadEpisodes()
-}
-
 protocol EpisodesViewModelResponsibilities: UITableViewDataSource, UITableViewDelegate {
-    var delegate: EpisodeLoaderDelagate? {get set}
-    func loadEpisode(storyID: Int)
+    func loadEpisode(storyID: Int, didLoad: @escaping () -> Void, failLoad: @escaping () -> Void)
 }
 
 
 class MockEpisodeViewModel: NSObject, EpisodesViewModelResponsibilities {
-    weak var delegate: EpisodeLoaderDelagate?
-    private let networkProvider: EpisodeNetworkProvider
-    let host = "http://ec2-54-234-103-230.compute-1.amazonaws.com"
     var episodes: Episode?
-    
-    init(networkProvider: EpisodeNetworkProvider) {
-        self.networkProvider = networkProvider
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let count = episodes?.posts.count else { return 0 }
@@ -45,55 +32,18 @@ class MockEpisodeViewModel: NSObject, EpisodesViewModelResponsibilities {
         return UITableViewCell()
     }
     
-    func loadEpisode(storyID: Int) {
-        networkProvider.episodes(withHost: host, storyID: storyID, success: { [unowned self] (loadedEpisodes) in
-            if loadedEpisodes.isParsedSuccessfully {
+    func loadEpisode(storyID: Int, didLoad: @escaping () -> Void, failLoad: @escaping () -> Void) {
+        APIClient.instance.request(forID: storyID, typeRequest: .getPost, typePost: .episode, success: { [unowned self] (loadedEpisode) in
+            guard let loadedEpisode = Episode(json: loadedEpisode) else {
+                failLoad()
+                return
             }
-            self.episodes = loadedEpisodes
-            self.delegate?.didLoadEpisodes()
-        }) { () in
-            self.delegate?.failLoadEpisodes()
+            self.episodes = loadedEpisode
+            didLoad()
+        }) {
+            failLoad()
         }
     }
 
-}
-
-class EpisodeNetworkProvider {
-    var currentRequest: DataRequest?
-    
-    func episodes(withHost host: String, storyID: Int, success: @escaping (Episode) -> Void, failure: @escaping () -> Void) {
-        let url = host
-        
-        let parameters: Parameters = [
-            "json": "core.get_posts",
-            "post_parent": "\(storyID)",
-            "post_type": "clutch_episode",
-            "dev": "1" ]
-        currentRequest = Alamofire.request(url, parameters: parameters).responseString { (response) in
-            
-            if response.error != nil {
-                failure()
-            } else {
-                guard let data = response.result.value?.data(using: .utf8) else {
-                    failure()
-                    return
-                }
-                do {
-                    let serializedData = try JSONSerialization.jsonObject(with: data, options : .allowFragments)
-                    guard let json = serializedData as? [String: Any] else {
-                        failure()
-                        return
-                    }
-                    guard let episode = Episode(json: json) else {
-                        failure()
-                        return
-                    }
-                    success(episode)
-                } catch {
-                    failure()
-                }
-            }
-        }
-    }
 }
 

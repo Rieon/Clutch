@@ -10,6 +10,8 @@
 		0A009E7221577D6500792A9D /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A009E7121577D6400792A9D /* Author.swift */; };
 		0A009E7421577D6E00792A9D /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A009E7321577D6E00792A9D /* Episode.swift */; };
 		0A038A942157EB72000975E8 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A038A932157EB72000975E8 /* APIClient.swift */; };
+		0A038AA22158FDB1000975E8 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A038AA02158FDB1000975E8 /* ChatTableViewController.swift */; };
+		0A038AA32158FDB1000975E8 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A038AA12158FDB1000975E8 /* ChatTableViewCell.swift */; };
 		0A2BCCE42156CC96008EE0CF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2BCCE32156CC96008EE0CF /* Alamofire.framework */; };
 		0A37F5EB21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5EA21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift */; };
 		0A37F5F021554F5D00FEA557 /* StoryViewModelResponsibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5EF21554F5D00FEA557 /* StoryViewModelResponsibilities.swift */; };
@@ -50,6 +52,8 @@
 		0A009E7121577D6400792A9D /* Author.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		0A009E7321577D6E00792A9D /* Episode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		0A038A932157EB72000975E8 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		0A038AA02158FDB1000975E8 /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
+		0A038AA12158FDB1000975E8 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		0A2BCCE32156CC96008EE0CF /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		0A37F5EA21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModelResponsibilities.swift; sourceTree = "<group>"; };
 		0A37F5EF21554F5D00FEA557 /* StoryViewModelResponsibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModelResponsibilities.swift; sourceTree = "<group>"; };
@@ -109,6 +113,23 @@
 			path = manager;
 			sourceTree = "<group>";
 		};
+		0A038A9E2158FD90000975E8 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				0A038A9F2158FDA7000975E8 /* view */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		0A038A9F2158FDA7000975E8 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0A038AA12158FDB1000975E8 /* ChatTableViewCell.swift */,
+				0A038AA02158FDB1000975E8 /* ChatTableViewController.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		0A2BCCE22156CC96008EE0CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +181,7 @@
 		0AED5D6E214A80B2008AF775 /* viYarn */ = {
 			isa = PBXGroup;
 			children = (
+				0A038A9E2158FD90000975E8 /* Chat */,
 				0A038A922157EB31000975E8 /* manager */,
 				9C25B1282155541000013D49 /* Coordinator */,
 				0AED5DB2214C2B3E008AF775 /* Story */,
@@ -397,9 +419,11 @@
 				0A37F5F221554F6A00FEA557 /* Story.swift in Sources */,
 				0A37F5EB21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift in Sources */,
 				0AED5DA6214A816C008AF775 /* EpisodeTableViewCell.swift in Sources */,
+				0A038AA32158FDB1000975E8 /* ChatTableViewCell.swift in Sources */,
 				0AED5DB1214AB9E3008AF775 /* ProgressBarView.swift in Sources */,
 				0A009E7221577D6500792A9D /* Author.swift in Sources */,
 				0AED5D70214A80B2008AF775 /* AppDelegate.swift in Sources */,
+				0A038AA22158FDB1000975E8 /* ChatTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

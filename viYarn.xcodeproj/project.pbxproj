@@ -12,6 +12,8 @@
 		0A038A942157EB72000975E8 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A038A932157EB72000975E8 /* APIClient.swift */; };
 		0A038AA22158FDB1000975E8 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A038AA02158FDB1000975E8 /* ChatTableViewController.swift */; };
 		0A038AA32158FDB1000975E8 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A038AA12158FDB1000975E8 /* ChatTableViewCell.swift */; };
+		0A038AA521596031000975E8 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A038AA421596031000975E8 /* SwiftSoup.framework */; };
+		0A038AA72159814E000975E8 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A038AA62159814E000975E8 /* AlamofireImage.framework */; };
 		0A2BCCE42156CC96008EE0CF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2BCCE32156CC96008EE0CF /* Alamofire.framework */; };
 		0A37F5EB21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5EA21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift */; };
 		0A37F5F021554F5D00FEA557 /* StoryViewModelResponsibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5EF21554F5D00FEA557 /* StoryViewModelResponsibilities.swift */; };
@@ -54,6 +56,8 @@
 		0A038A932157EB72000975E8 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		0A038AA02158FDB1000975E8 /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 		0A038AA12158FDB1000975E8 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		0A038AA421596031000975E8 /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
+		0A038AA62159814E000975E8 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		0A2BCCE32156CC96008EE0CF /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		0A37F5EA21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModelResponsibilities.swift; sourceTree = "<group>"; };
 		0A37F5EF21554F5D00FEA557 /* StoryViewModelResponsibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModelResponsibilities.swift; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A2BCCE42156CC96008EE0CF /* Alamofire.framework in Frameworks */,
+				0A038AA521596031000975E8 /* SwiftSoup.framework in Frameworks */,
+				0A038AA72159814E000975E8 /* AlamofireImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +139,8 @@
 		0A2BCCE22156CC96008EE0CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A038AA62159814E000975E8 /* AlamofireImage.framework */,
+				0A038AA421596031000975E8 /* SwiftSoup.framework */,
 				0A2BCCE32156CC96008EE0CF /* Alamofire.framework */,
 			);
 			name = Frameworks;
@@ -393,6 +401,8 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftSoup.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 			);
 			outputPaths = (
 			);

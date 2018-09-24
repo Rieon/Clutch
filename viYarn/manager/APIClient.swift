@@ -15,21 +15,24 @@ enum APIClientPostType: String {
 }
 enum APIClientTypeRequest: String {
     case getPost = "core.get_posts"
+    case getStory = "core.get_category_posts"
 }
 enum ParsingError: Error {
     case wrongData
 }
 class APIClient {
-    
+    // http://ec2-54-234-103-230.compute-1.amazonaws.com/?json=json=core.get_category_posts&id=2&post_type=clutch_story&dev=1
     let host = "http://ec2-54-234-103-230.compute-1.amazonaws.com"
     static let instance = APIClient()
     
     func request(forID: Int, typeRequest:APIClientTypeRequest, typePost:APIClientPostType, success: @escaping ([String: Any]) -> Void, failure: @escaping (Error) -> Void) {
         let url = host
         
+        let keyPost = typePost == .episode ? "post_parent" : "id"
+        
         let parameters: Parameters = [
             "json": typeRequest.rawValue,
-            "post_parent": "\(forID)",
+            keyPost: "\(forID)",
             "post_type": typePost.rawValue,
             "dev": "1" ]
         Alamofire.request(url, parameters: parameters).responseJSON { (response) in

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StoryViewController: UIViewController, StoryLoaderDelagate {
+class StoryViewController: UIViewController {
     
 
     let colorBackground: UIColor = #colorLiteral(red: 0.09803921569, green: 0.1215686275, blue: 0.1568627451, alpha: 1)
@@ -18,14 +18,6 @@ class StoryViewController: UIViewController, StoryLoaderDelagate {
     }
     private var cellLayoutWidth: CGFloat {
         return view.bounds.width * 0.9
-    }
-    
-    func didLoadStory() {
-        storyCollectionView.reloadData()
-    }
-    
-    func failLoadStory() {
-        
     }
     
     lazy var storyCollectionView: UICollectionView = {
@@ -44,7 +36,6 @@ class StoryViewController: UIViewController, StoryLoaderDelagate {
     init(viewModel: StoryViewModelResponsibilities) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        self.viewModel.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -59,14 +50,19 @@ class StoryViewController: UIViewController, StoryLoaderDelagate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.loadStory()
+        viewModel.loadEpisode(categoryID: 2, didLoad: loadStoryByCategory, failLoad: failLoadStory)
         view.addSubview(storyCollectionView)
         storyCollectionView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         storyCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         storyCollectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         storyCollectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
     }
-
+    func loadStoryByCategory(){
+        self.storyCollectionView.reloadData()
+    }
+    func failLoadStory(error: Error){
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

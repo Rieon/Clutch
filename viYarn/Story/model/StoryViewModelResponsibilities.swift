@@ -1,14 +1,4 @@
 //
-//  StoryViewModelResponsibilities.swift
-//  viYarn
-//
-//  Created by vieon on 21.09.2018.
-//  Copyright © 2018 RIEON. All rights reserved.
-//
-
-import Foundation
-
-//
 //  EpisodesViewModelResponsibilities.swift
 //  viYarn
 //
@@ -19,24 +9,17 @@ import Foundation
 import Foundation
 import UIKit
 
-protocol StoryLoaderDelagate: class{
-    func didLoadStory()
-    func failLoadStory()
-}
-
 protocol StoryViewModelResponsibilities: UICollectionViewDelegate, UICollectionViewDataSource {
-    var delegate: StoryLoaderDelagate? {get set}
-    func loadStory()
+    func loadEpisode(categoryID: Int, didLoad: @escaping () -> Void, failLoad: @escaping (Error) -> Void)
 }
 
 
 class MockStoryViewModel: NSObject, StoryViewModelResponsibilities {
-    weak var delegate: StoryLoaderDelagate?
     var stories = [Story]()
     
-    let didTapEpisode: () -> Void
+    let didTapEpisode: (Int) -> Void
     
-    init(didTapEpisode: @escaping () -> Void) {
+    init(didTapEpisode: @escaping (Int) -> Void) {
         self.didTapEpisode = didTapEpisode
         super.init()
     }
@@ -48,16 +31,28 @@ class MockStoryViewModel: NSObject, StoryViewModelResponsibilities {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryCollectionViewCell.cellID,
                                                          for: indexPath as IndexPath) as? StoryCollectionViewCell {
-            return cell.configured(with: { [unowned self] in self.didTapEpisode() })
+            return cell.configured(story: stories[indexPath.row], with: self.didTapEpisode)
         }
         return UICollectionViewCell()
     }
     
-    func loadStory() {
-        self.stories = [
-            Story(title: "Story", description: "eplh", viewsCount: "view 11", datePublish: Date(timeIntervalSince1970: Date().timeIntervalSince1970))
-        ]
-        delegate?.didLoadStory()
+    func loadEpisode(categoryID: Int, didLoad: @escaping () -> Void, failLoad: @escaping (Error) -> Void) {
+        APIClient.instance.request(forID: categoryID, typeRequest: .getStory, typePost: .story, success: { [unowned self] (loadedStory) in
+            
+            guard let postsJson = loadedStory["posts"] as? [[String : Any]] else {
+                failLoad(ParsingError.wrongData)
+                return
+            }
+            var postsArr = [Story]()
+            for postJson in postsJson {
+                guard let post = Story(json: postJson) else { return }
+                postsArr.append(post)
+            }
+            self.stories = postsArr
+            didLoad()
+        }) { (error) in
+            failLoad(error)
+        }
     }
 
     

@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class StoryCollectionViewCell: UICollectionViewCell {
     
     static let cellID = "story"
     
-    var didTapEpisodes: (() -> Void)?
+    var didTapEpisodes: ((Int) -> Void)?
+    var story: Story?
     
     let imgPreview: UIImageView = {
         let image = UIImageView()
@@ -182,18 +184,24 @@ class StoryCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func tapEpisodeList() {
-        didTapEpisodes?()
+        didTapEpisodes?(story!.id)
     }
     
-    func configured(with didTapEpisodes: (() -> Void)? = nil) -> StoryCollectionViewCell {
+    func configured(story: Story, with didTapEpisodes: ((Int) -> Void)? = nil) -> StoryCollectionViewCell {
+        self.story = story
         self.didTapEpisodes = didTapEpisodes
         
         txtCountView.text = "304,1 k views"
-        txtTitle.text = "Little Soldier Girl"
+        txtTitle.text = story.title
         txtEpisode.text = "Episode 1"
-        txtDate.text = "Mon/Wed 11am"
-        txtDesc.text = "Description text"
+        txtDate.text = story.date
+        txtDesc.text = story.postContent
         txtTitleProgress.text = "Start Episode 1"
+        
+        if let url = URL(string: story.urlImageMedium) {
+            self.imgPreview.af_setImage(withURL: url)
+        }
+        
         
         viewProgressEpisode.setProgress(to: 0.4, fromWidth: viewProgressEpisode.bounds.width)
         return self

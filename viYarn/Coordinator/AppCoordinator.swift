@@ -18,9 +18,10 @@ class AppCoordinator: NSObject {
         self.window = window
     }
     func initFlow() {
+        let chatView = ChatTableViewController()
         let storyViewModel = MockStoryViewModel(didTapEpisode: { [unowned self] in self.episodeScreenSelected() })
         let storyController = StoryViewController(viewModel: storyViewModel)
-        navController = UINavigationController(rootViewController: storyController)
+        navController = UINavigationController(rootViewController: chatView)
         window.rootViewController = navController
     }
     

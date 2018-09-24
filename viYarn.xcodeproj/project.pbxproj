@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A038A9921581ADB000975E8 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A038A9821581ADB000975E8 /* ChatTableViewController.swift */; };
+		0A038A9B21581CA7000975E8 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A038A9A21581CA7000975E8 /* ChatTableViewCell.swift */; };
 		0A37F5EB21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5EA21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift */; };
 		0A37F5ED215518F500FEA557 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5EC215518F500FEA557 /* Episode.swift */; };
 		0A37F5F021554F5D00FEA557 /* StoryViewModelResponsibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5EF21554F5D00FEA557 /* StoryViewModelResponsibilities.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A038A9821581ADB000975E8 /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
+		0A038A9A21581CA7000975E8 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		0A37F5EA21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModelResponsibilities.swift; sourceTree = "<group>"; };
 		0A37F5EC215518F500FEA557 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		0A37F5EF21554F5D00FEA557 /* StoryViewModelResponsibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModelResponsibilities.swift; sourceTree = "<group>"; };
@@ -94,6 +98,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A038A9521580384000975E8 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				0A038A97215803A1000975E8 /* model */,
+				0A038A962158039B000975E8 /* view */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		0A038A962158039B000975E8 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0A038A9821581ADB000975E8 /* ChatTableViewController.swift */,
+				0A038A9A21581CA7000975E8 /* ChatTableViewCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0A038A97215803A1000975E8 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		0A37F5E921550B1400FEA557 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +164,7 @@
 		0AED5D6E214A80B2008AF775 /* viYarn */ = {
 			isa = PBXGroup;
 			children = (
+				0A038A9521580384000975E8 /* Chat */,
 				9C25B1282155541000013D49 /* Coordinator */,
 				0AED5DB2214C2B3E008AF775 /* Story */,
 				0AED5DA0214A80C6008AF775 /* Episode */,
@@ -353,7 +383,9 @@
 				0A37F5EB21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift in Sources */,
 				0AED5DA6214A816C008AF775 /* EpisodeTableViewCell.swift in Sources */,
 				0AED5DB1214AB9E3008AF775 /* ProgressBarView.swift in Sources */,
+				0A038A9B21581CA7000975E8 /* ChatTableViewCell.swift in Sources */,
 				0AED5D70214A80B2008AF775 /* AppDelegate.swift in Sources */,
+				0A038A9921581ADB000975E8 /* ChatTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

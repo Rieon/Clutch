@@ -116,7 +116,7 @@ class StoryCollectionViewCell: UICollectionViewCell {
         btnShowEpisode.heightAnchor.constraint(equalToConstant: radiusButton).isActive = true
         btnShowEpisode.widthAnchor.constraint(equalToConstant: radiusButton).isActive = true
         
-        contentView.addSubview(imgPreview)
+        contentView.insertSubview(imgPreview, at: 0)
         imgPreview.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         imgPreview.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         imgPreview.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true

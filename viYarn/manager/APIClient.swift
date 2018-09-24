@@ -21,7 +21,7 @@ enum ParsingError: Error {
     case wrongData
 }
 class APIClient {
-    // http://ec2-54-234-103-230.compute-1.amazonaws.com/?json=json=core.get_category_posts&id=2&post_type=clutch_story&dev=1
+  
     let host = "http://ec2-54-234-103-230.compute-1.amazonaws.com"
     static let instance = APIClient()
     

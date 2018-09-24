@@ -8,12 +8,13 @@
 
 import UIKit
 
-class EpisodeViewController: UIViewController, EpisodeLoaderDelagate {
+class EpisodeViewController: UIViewController {
+    
     func didLoadEpisodes() {
         episodesTableView.reloadData()
     }
     
-    func failLoadEpisodes() {
+    func failLoadEpisodes(error: Error) {
         
     }
     
@@ -34,7 +35,6 @@ class EpisodeViewController: UIViewController, EpisodeLoaderDelagate {
     init(viewModel: EpisodesViewModelResponsibilities) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        self.viewModel.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -44,7 +44,7 @@ class EpisodeViewController: UIViewController, EpisodeLoaderDelagate {
     let colorBackground: UIColor = #colorLiteral(red: 0.09803921569, green: 0.1215686275, blue: 0.1568627451, alpha: 1)
     
     override func viewDidLoad() {
-        viewModel.loadEpisode()
+        viewModel.loadEpisode(storyID: 37, didLoad: didLoadEpisodes, failLoad: failLoadEpisodes)
         view.backgroundColor = colorBackground
         super.viewDidLoad()
         

@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A038A9921581ADB000975E8 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A038A9821581ADB000975E8 /* ChatTableViewController.swift */; };
-		0A038A9B21581CA7000975E8 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A038A9A21581CA7000975E8 /* ChatTableViewCell.swift */; };
+		0A009E7221577D6500792A9D /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A009E7121577D6400792A9D /* Author.swift */; };
+		0A009E7421577D6E00792A9D /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A009E7321577D6E00792A9D /* Episode.swift */; };
+		0A038A942157EB72000975E8 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A038A932157EB72000975E8 /* APIClient.swift */; };
+		0A2BCCE42156CC96008EE0CF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2BCCE32156CC96008EE0CF /* Alamofire.framework */; };
 		0A37F5EB21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5EA21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift */; };
-		0A37F5ED215518F500FEA557 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5EC215518F500FEA557 /* Episode.swift */; };
 		0A37F5F021554F5D00FEA557 /* StoryViewModelResponsibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5EF21554F5D00FEA557 /* StoryViewModelResponsibilities.swift */; };
 		0A37F5F221554F6A00FEA557 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5F121554F6A00FEA557 /* Story.swift */; };
 		0AED5D70214A80B2008AF775 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5D6F214A80B2008AF775 /* AppDelegate.swift */; };
@@ -46,10 +47,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0A038A9821581ADB000975E8 /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
-		0A038A9A21581CA7000975E8 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		0A009E7121577D6400792A9D /* Author.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
+		0A009E7321577D6E00792A9D /* Episode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		0A038A932157EB72000975E8 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		0A2BCCE32156CC96008EE0CF /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		0A37F5EA21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModelResponsibilities.swift; sourceTree = "<group>"; };
-		0A37F5EC215518F500FEA557 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		0A37F5EF21554F5D00FEA557 /* StoryViewModelResponsibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModelResponsibilities.swift; sourceTree = "<group>"; };
 		0A37F5F121554F6A00FEA557 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		0AED5D6C214A80B2008AF775 /* viYarn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = viYarn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A2BCCE42156CC96008EE0CF /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,36 +101,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A038A9521580384000975E8 /* Chat */ = {
+		0A038A922157EB31000975E8 /* manager */ = {
 			isa = PBXGroup;
 			children = (
-				0A038A97215803A1000975E8 /* model */,
-				0A038A962158039B000975E8 /* view */,
+				0A038A932157EB72000975E8 /* APIClient.swift */,
 			);
-			path = Chat;
+			path = manager;
 			sourceTree = "<group>";
 		};
-		0A038A962158039B000975E8 /* view */ = {
+		0A2BCCE22156CC96008EE0CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0A038A9821581ADB000975E8 /* ChatTableViewController.swift */,
-				0A038A9A21581CA7000975E8 /* ChatTableViewCell.swift */,
+				0A2BCCE32156CC96008EE0CF /* Alamofire.framework */,
 			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		0A038A97215803A1000975E8 /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		0A37F5E921550B1400FEA557 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				0A009E7121577D6400792A9D /* Author.swift */,
+				0A009E7321577D6E00792A9D /* Episode.swift */,
 				0A37F5EA21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift */,
-				0A37F5EC215518F500FEA557 /* Episode.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -148,6 +143,7 @@
 				0AED5D86214A80B9008AF775 /* viYarnTests */,
 				0AED5D91214A80B9008AF775 /* viYarnUITests */,
 				0AED5D6D214A80B2008AF775 /* Products */,
+				0A2BCCE22156CC96008EE0CF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -164,7 +160,7 @@
 		0AED5D6E214A80B2008AF775 /* viYarn */ = {
 			isa = PBXGroup;
 			children = (
-				0A038A9521580384000975E8 /* Chat */,
+				0A038A922157EB31000975E8 /* manager */,
 				9C25B1282155541000013D49 /* Coordinator */,
 				0AED5DB2214C2B3E008AF775 /* Story */,
 				0AED5DA0214A80C6008AF775 /* Episode */,
@@ -251,6 +247,7 @@
 				0AED5D68214A80B2008AF775 /* Sources */,
 				0AED5D69214A80B2008AF775 /* Frameworks */,
 				0AED5D6A214A80B2008AF775 /* Resources */,
+				0A2BCCE52156CCA7008EE0CF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -366,26 +363,43 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0A2BCCE52156CCA7008EE0CF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0AED5D68214A80B2008AF775 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9C25B12A2155546000013D49 /* AppCoordinator.swift in Sources */,
+				0A009E7421577D6E00792A9D /* Episode.swift in Sources */,
 				0AED5DAF214AB6B2008AF775 /* CircleButton.swift in Sources */,
+				0A038A942157EB72000975E8 /* APIClient.swift in Sources */,
 				0AED5D78214A80B3008AF775 /* viYarn.xcdatamodeld in Sources */,
 				0AED5DB9214C4450008AF775 /* StoryViewController.swift in Sources */,
 				0A37F5F021554F5D00FEA557 /* StoryViewModelResponsibilities.swift in Sources */,
 				0AED5DBE214D7C49008AF775 /* StoryCollectionViewCell.swift in Sources */,
-				0A37F5ED215518F500FEA557 /* Episode.swift in Sources */,
 				0AED5DA3214A8122008AF775 /* EpisodeViewController.swift in Sources */,
 				0A37F5F221554F6A00FEA557 /* Story.swift in Sources */,
 				0A37F5EB21550B4B00FEA557 /* EpisodesViewModelResponsibilities.swift in Sources */,
 				0AED5DA6214A816C008AF775 /* EpisodeTableViewCell.swift in Sources */,
 				0AED5DB1214AB9E3008AF775 /* ProgressBarView.swift in Sources */,
-				0A038A9B21581CA7000975E8 /* ChatTableViewCell.swift in Sources */,
+				0A009E7221577D6500792A9D /* Author.swift in Sources */,
 				0AED5D70214A80B2008AF775 /* AppDelegate.swift in Sources */,
-				0A038A9921581ADB000975E8 /* ChatTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,6 +566,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V6547YQW5R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = viYarn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -570,6 +588,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V6547YQW5R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = viYarn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

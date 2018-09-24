@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "viYarn/Episode/view/EpisodeTableViewCell.swift"
-            timestampString = "559338363.913963"
+            timestampString = "559475199.681356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "92"
@@ -90,13 +90,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "viYarn/Episode/view/EpisodeViewController.swift"
-            timestampString = "559414288.6995521"
+            timestampString = "559475199.686682"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "60"
             endingLineNumber = "60"
             landmarkName = "EpisodeViewController"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "viYarn/Episode/model/EpisodesViewModelResponsibilities.swift"
+            timestampString = "559475261.2338721"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "loadEpisode(storyID:didLoad:failLoad:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "viYarn.MockEpisodeViewModel.loadEpisode(storyID: Swift.Int, didLoad: () -&gt; (), failLoad: (Swift.Error) -&gt; ()) -&gt; ()"
+                  moduleName = "viYarn"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitry/Desktop/xcode/gamebot/swift/viYarn/viYarn/Episode/model/EpisodesViewModelResponsibilities.swift"
+                  timestampString = "559475263.796476"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "37">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; () in viYarn.MockEpisodeViewModel.loadEpisode(storyID: Swift.Int, didLoad: () -&gt; (), failLoad: (Swift.Error) -&gt; ()) -&gt; ()"
+                  moduleName = "viYarn"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitry/Desktop/xcode/gamebot/swift/viYarn/viYarn/Episode/model/EpisodesViewModelResponsibilities.swift"
+                  timestampString = "559475263.805961"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "57">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

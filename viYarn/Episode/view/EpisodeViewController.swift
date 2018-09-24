@@ -14,7 +14,7 @@ class EpisodeViewController: UIViewController {
         episodesTableView.reloadData()
     }
     
-    func failLoadEpisodes() {
+    func failLoadEpisodes(error: Error) {
         
     }
     

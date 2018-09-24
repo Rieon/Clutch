@@ -102,7 +102,7 @@ class EpisodeTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
-    func configured(for index: Int, with episode: EpisodePost) -> EpisodeTableViewCell{
+    func configured(for index: Int, with episode: Episode) -> EpisodeTableViewCell {
         txtTitle.text = episode.title
         txtDesc.text = episode.content
         

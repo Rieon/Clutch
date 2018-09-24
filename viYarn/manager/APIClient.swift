@@ -16,12 +16,15 @@ enum APIClientPostType: String {
 enum APIClientTypeRequest: String {
     case getPost = "core.get_posts"
 }
-struct APIClient {
+enum ParsingError: Error {
+    case wrongData
+}
+class APIClient {
     
     let host = "http://ec2-54-234-103-230.compute-1.amazonaws.com"
     static let instance = APIClient()
     
-    func request(forID: Int, typeRequest:APIClientTypeRequest, typePost:APIClientPostType, success: @escaping ([String: Any]) -> Void, failure: @escaping () -> Void) {
+    func request(forID: Int, typeRequest:APIClientTypeRequest, typePost:APIClientPostType, success: @escaping ([String: Any]) -> Void, failure: @escaping (Error) -> Void) {
         let url = host
         
         let parameters: Parameters = [
@@ -31,15 +34,15 @@ struct APIClient {
             "dev": "1" ]
         Alamofire.request(url, parameters: parameters).responseJSON { (response) in
             
-            if response.error != nil {
-                failure()
+            if let error = response.error {
+                failure(error)
             } else {
                 guard let data = response.result.value else {
-                    failure()
+                    failure(ParsingError.wrongData)
                     return
                 }
                 guard let json = data as? [String: Any] else {
-                    failure()
+                    failure(ParsingError.wrongData)
                     return
                 }
                 success(json)

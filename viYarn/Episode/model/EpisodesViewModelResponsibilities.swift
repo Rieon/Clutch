@@ -11,37 +11,43 @@ import UIKit
 import Alamofire
 
 protocol EpisodesViewModelResponsibilities: UITableViewDataSource, UITableViewDelegate {
-    func loadEpisode(storyID: Int, didLoad: @escaping () -> Void, failLoad: @escaping () -> Void)
+    func loadEpisode(storyID: Int, didLoad: @escaping () -> Void, failLoad: @escaping (Error) -> Void)
 }
 
 
 class MockEpisodeViewModel: NSObject, EpisodesViewModelResponsibilities {
-    var episodes: Episode?
+    var episodes = [Episode]()
+    
+  
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = episodes?.posts.count else { return 0 }
-        return count
+        return episodes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: EpisodeTableViewCell.cellID) as? EpisodeTableViewCell {
-            guard let postEpisode = episodes?.posts[indexPath.row] else { return UITableViewCell() }
+            let postEpisode = episodes[indexPath.row]
             return cell.configured(for: indexPath.row, with: postEpisode)
-        }
-        
+        }    
         return UITableViewCell()
     }
     
-    func loadEpisode(storyID: Int, didLoad: @escaping () -> Void, failLoad: @escaping () -> Void) {
+    func loadEpisode(storyID: Int, didLoad: @escaping () -> Void, failLoad: @escaping (Error) -> Void) {
         APIClient.instance.request(forID: storyID, typeRequest: .getPost, typePost: .episode, success: { [unowned self] (loadedEpisode) in
-            guard let loadedEpisode = Episode(json: loadedEpisode) else {
-                failLoad()
+            
+            guard let postsJson = loadedEpisode["posts"] as? [[String : Any]] else {
+                failLoad(ParsingError.wrongData)
                 return
             }
-            self.episodes = loadedEpisode
+            var postsArr = [Episode]()
+            for postJson in postsJson {
+                guard let post = Episode(json: postJson) else { return }
+                postsArr.append(post)
+            }
+            self.episodes = postsArr
             didLoad()
-        }) {
-            failLoad()
+        }) { (error) in
+            failLoad(error)
         }
     }
 

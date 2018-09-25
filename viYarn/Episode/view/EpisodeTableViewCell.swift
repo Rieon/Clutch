@@ -98,7 +98,7 @@ class EpisodeTableViewCell: UITableViewCell {
         
         layoutIfNeeded()
         
-        let gesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapOpenChat))
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(tapOpenChat))
         addGestureRecognizer(gesture)
         
     }

@@ -40,8 +40,7 @@ class MockStoryViewModel: NSObject, StoryViewModelResponsibilities {
         APIClient.instance.request(forID: categoryID, typeRequest: .getStory, typePost: .story, success: { [unowned self] (loadedStory) in
             
             guard let postsJson = loadedStory["posts"] as? [[String : Any]] else {
-                failLoad(ParsingError.wrongData)
-                return
+                return failLoad(ParsingError.wrongData)
             }
             var postsArr = [Story]()
             for postJson in postsJson {

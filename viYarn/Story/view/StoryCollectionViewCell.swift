@@ -186,9 +186,9 @@ class StoryCollectionViewCell: UICollectionViewCell {
         didTapEpisodes?(btnShowEpisode.tag)
     }
     
-    func configured(story: Story, storyID: Int, with didTapEpisodes: ((Int) -> Void)? = nil) -> StoryCollectionViewCell {
+    func configured(story: Story, with atIndex: Int, with didTapEpisodes: ((Int) -> Void)? = nil) -> StoryCollectionViewCell {
         self.didTapEpisodes = didTapEpisodes
-        btnShowEpisode.tag = storyID
+        btnShowEpisode.tag = atIndex
         
         txtCountView.text = "304,1 k views"
         txtTitle.text = story.title

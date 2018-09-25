@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import SwiftSoup
 
 struct Episode {
     let id: Int
     let type: String
     let status: String
     let title: String
-    let content: String
+    let content: EpisodeContent
     let author: Author
 }
 
@@ -24,10 +25,13 @@ extension Episode {
         guard let type = json["type"] as? String else { return nil }
         guard let status = json["status"] as? String else { return nil }
         guard let title = json["title"] as? String else { return nil }
-        guard let content = json["content"] as? String else { return nil }
+        guard let contentHtml = json["content"] as? String else { return nil }
+        guard let content = EpisodeContent(html: contentHtml) else { return nil }
         guard let jsonAuthor = json["author"] as? [String: Any] else { return nil }
         guard let author = Author(json: jsonAuthor) else { return nil }
         
         self.init(id: id, type: type, status: status, title: title, content: content, author: author)
     }
+    
+    
 }

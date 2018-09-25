@@ -10,10 +10,16 @@ import UIKit
 
 class ChatTableViewController: UITableViewController {
 
-    let messages = ["lol",
-                    "lol lol lolo lol lol lol lol lolo lol lol lol lol lolo lol lol lol lol lolo lol lol",
-                    "lol lol lolo lol lol lol lol lololol lol lolo lol lol lol lol lololol lol lolo lol lol lol lol lololol lol lolo lol lol lol lol lolo lol lol lolo lol lol lol lol lolo",
-                    "lol lol lolo lol lol lol lol lolo "]
+    let loadedEpisodeContent: EpisodeContent
+    init(loadedEpisodeContent: EpisodeContent) {
+        self.loadedEpisodeContent = loadedEpisodeContent
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,19 +30,25 @@ class ChatTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return loadedEpisodeContent.chatMessages.count
+    }
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        return loadedEpisodeContent.chatMessages[section].messages.count
     }
 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return loadedEpisodeContent.chatMessages[section].author
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ChatTableViewCell.cellID, for: indexPath) as? ChatTableViewCell else {
             return UITableViewCell()
         }
-        cell.isAuthor = indexPath.row % 2 == 0
-        return cell.configured(message: messages[indexPath.row])
+        cell.isAuthor = indexPath.section % 2 == 0
+        return cell.configured(message: loadedEpisodeContent.chatMessages[indexPath.section].messages[indexPath.row])
     }
  
 

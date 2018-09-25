@@ -25,11 +25,11 @@ class AppCoordinator: NSObject {
     
     func episodeScreenSelected(id: Int) {
         navController?.setNavigationBarHidden(false, animated: true)
-        navController?.pushViewController(EpisodeViewController(loadStoryID: id, didTapEpisode:{ [unowned self] in self.chatScreenSelected() }), animated: true)
+        navController?.pushViewController(EpisodeViewController(loadStoryID: id, didTapEpisode: chatScreenSelected), animated: true)
     }
-    func chatScreenSelected(){
+    func chatScreenSelected(content: EpisodeContent){
         navController?.setNavigationBarHidden(false, animated: true)
-        navController?.pushViewController(ChatTableViewController(), animated: true)
+        navController?.pushViewController(ChatTableViewController(loadedEpisodeContent: content), animated: true)
     }
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StoryViewController: UIViewController {
+class StoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
 
     let colorBackground: UIColor = #colorLiteral(red: 0.09803921569, green: 0.1215686275, blue: 0.1568627451, alpha: 1)
@@ -20,21 +20,23 @@ class StoryViewController: UIViewController {
         return view.bounds.width * 0.9
     }
     
+    var stories = [Story]()
+    let didTapEpisode: (Int) -> Void
+    
     lazy var storyCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: cellLayoutWidth, height: cellLayoutHeight)
         let collection = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
-        collection.delegate = viewModel
-        collection.dataSource = viewModel
+        collection.delegate = self
+        collection.dataSource = self
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.register(StoryCollectionViewCell.self, forCellWithReuseIdentifier: StoryCollectionViewCell.cellID)
         collection.backgroundColor = colorBackground
         return collection
     }()
     
-    let viewModel: StoryViewModelResponsibilities
-    init(viewModel: StoryViewModelResponsibilities) {
-        self.viewModel = viewModel
+    init(didTapEpisode: @escaping (Int) -> Void) {
+        self.didTapEpisode = didTapEpisode
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -50,13 +52,45 @@ class StoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.loadEpisode(categoryID: 2, didLoad: loadStoryByCategory, failLoad: failLoadStory)
+        loadEpisode(categoryID: 2, didLoad: loadStoryByCategory, failLoad: failLoadStory)
+        
         view.addSubview(storyCollectionView)
         storyCollectionView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         storyCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         storyCollectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         storyCollectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
     }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return stories.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryCollectionViewCell.cellID,
+                                                         for: indexPath as IndexPath) as? StoryCollectionViewCell {
+            return cell.configured(story: stories[indexPath.row], with: self.didTapEpisode)
+        }
+        return UICollectionViewCell()
+    }
+    
+    func loadEpisode(categoryID: Int, didLoad: @escaping () -> Void, failLoad: @escaping (Error) -> Void) {
+        APIClient.instance.request(forID: categoryID, typeRequest: .getStory, typePost: .story, success: { [unowned self] (loadedStory) in
+            
+            guard let postsJson = loadedStory["posts"] as? [[String : Any]] else {
+                return failLoad(ParsingError.wrongData)
+            }
+            var postsArr = [Story]()
+            for postJson in postsJson {
+                guard let post = Story(json: postJson) else { return }
+                postsArr.append(post)
+            }
+            self.stories = postsArr
+            didLoad()
+        }) { (error) in
+            failLoad(error)
+        }
+    }
+    
     func loadStoryByCategory(){
         self.storyCollectionView.reloadData()
     }

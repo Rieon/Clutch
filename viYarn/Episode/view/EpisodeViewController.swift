@@ -8,21 +8,16 @@
 
 import UIKit
 
-class EpisodeViewController: UIViewController {
+class EpisodeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    func didLoadEpisodes() {
-        episodesTableView.reloadData()
-    }
-    
-    func failLoadEpisodes(error: Error) {
-        
-    }
-    
+    var episodes = [Episode]()
+    let loadStoryID: Int
+    let didTapEpisode: () -> Void
     
     lazy var episodesTableView: UITableView = {
         let table = UITableView()
-        table.delegate = viewModel
-        table.dataSource = viewModel
+        table.delegate = self
+        table.dataSource = self
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(EpisodeTableViewCell.self, forCellReuseIdentifier: EpisodeTableViewCell.cellID)
         table.backgroundColor = colorBackground
@@ -31,9 +26,9 @@ class EpisodeViewController: UIViewController {
         return table
     }()
     
-    var viewModel: EpisodesViewModelResponsibilities
-    init(viewModel: EpisodesViewModelResponsibilities) {
-        self.viewModel = viewModel
+    init(loadStoryID: Int, didTapEpisode: @escaping () -> Void) {
+        self.loadStoryID = loadStoryID
+        self.didTapEpisode = didTapEpisode
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -44,7 +39,7 @@ class EpisodeViewController: UIViewController {
     let colorBackground: UIColor = #colorLiteral(red: 0.09803921569, green: 0.1215686275, blue: 0.1568627451, alpha: 1)
     
     override func viewDidLoad() {
-        viewModel.loadEpisode(storyID: 37, didLoad: didLoadEpisodes, failLoad: failLoadEpisodes)
+        loadEpisode(storyID: 37, didLoad: didLoadEpisodes, failLoad: failLoadEpisodes)
         view.backgroundColor = colorBackground
         super.viewDidLoad()
         
@@ -56,7 +51,43 @@ class EpisodeViewController: UIViewController {
         episodesTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
     }
     
-
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return episodes.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: EpisodeTableViewCell.cellID) as? EpisodeTableViewCell {
+            let postEpisode = episodes[indexPath.row]
+            return cell.configured(for: indexPath.row, with: postEpisode, didTapEpisode: didTapEpisode)
+        }
+        return UITableViewCell()
+    }
+    
+    func loadEpisode(storyID: Int, didLoad: @escaping () -> Void, failLoad: @escaping (Error) -> Void) {
+        APIClient.instance.request(forID: self.loadStoryID, typeRequest: .getPost, typePost: .episode, success: { [unowned self] (loadedEpisode) in
+            
+            guard let postsJson = loadedEpisode["posts"] as? [[String : Any]] else {
+                failLoad(ParsingError.wrongData)
+                return
+            }
+            var postsArr = [Episode]()
+            for postJson in postsJson {
+                guard let post = Episode(json: postJson) else { return }
+                postsArr.append(post)
+            }
+            self.episodes = postsArr
+            didLoad()
+        }) { (error) in
+            failLoad(error)
+        }
+    }
+    
+    func didLoadEpisodes() {
+        episodesTableView.reloadData()
+    }
+    
+    func failLoadEpisodes(error: Error) {
+    }
 
     @objc func onClickDone(){
         

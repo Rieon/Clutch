@@ -58,7 +58,7 @@ class EpisodeViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: EpisodeTableViewCell.cellID) as? EpisodeTableViewCell {
             let postEpisode = episodes[indexPath.row]
-            return cell.configured(for: indexPath.row, with: postEpisode, didTapEpisode: didTapEpisode)
+            return cell.configured(for: indexPath.row, with: postEpisode)
         }
         return UITableViewCell()
     }
@@ -82,6 +82,9 @@ class EpisodeViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.didTapEpisode()
+    }
     func didLoadEpisodes() {
         episodesTableView.reloadData()
     }

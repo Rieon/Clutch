@@ -12,7 +12,6 @@ import UIKit
 class EpisodeTableViewCell: UITableViewCell {
 
     static let cellID = "episode"
-    var didTapEpisode: (() -> Void)?
     
     let txtTitle: UILabel = {
         let txt = UILabel()
@@ -97,20 +96,15 @@ class EpisodeTableViewCell: UITableViewCell {
         progressLine.rightAnchor.constraint(equalTo: containerInfo.rightAnchor, constant: 0).isActive = true
         
         layoutIfNeeded()
-        
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(tapOpenChat))
-        addGestureRecognizer(gesture)
+    
         
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    @objc func tapOpenChat() {
-        didTapEpisode?()
-    }
     
-    func configured(for index: Int, with episode: Episode, didTapEpisode: (() -> Void)? = nil) -> EpisodeTableViewCell {
-        self.didTapEpisode = didTapEpisode
+    
+    func configured(for index: Int, with episode: Episode) -> EpisodeTableViewCell {
         txtTitle.text = episode.title
         txtDesc.text = episode.content
         

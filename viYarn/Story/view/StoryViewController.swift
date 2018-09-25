@@ -68,7 +68,7 @@ class StoryViewController: UIViewController, UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryCollectionViewCell.cellID,
                                                          for: indexPath as IndexPath) as? StoryCollectionViewCell {
-            return cell.configured(story: stories[indexPath.row], with: self.didTapEpisode)
+            return cell.configured(story: stories[indexPath.row], storyID: stories[indexPath.row].id, with: self.didTapEpisode)
         }
         return UICollectionViewCell()
     }

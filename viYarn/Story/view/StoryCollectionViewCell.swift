@@ -14,7 +14,6 @@ class StoryCollectionViewCell: UICollectionViewCell {
     static let cellID = "story"
     
     var didTapEpisodes: ((Int) -> Void)?
-    var story: Story?
     
     let imgPreview: UIImageView = {
         let image = UIImageView()
@@ -184,12 +183,12 @@ class StoryCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func tapEpisodeList() {
-        didTapEpisodes?(story!.id)
+        didTapEpisodes?(btnShowEpisode.tag)
     }
     
-    func configured(story: Story, with didTapEpisodes: ((Int) -> Void)? = nil) -> StoryCollectionViewCell {
-        self.story = story
+    func configured(story: Story, storyID: Int, with didTapEpisodes: ((Int) -> Void)? = nil) -> StoryCollectionViewCell {
         self.didTapEpisodes = didTapEpisodes
+        btnShowEpisode.tag = storyID
         
         txtCountView.text = "304,1 k views"
         txtTitle.text = story.title

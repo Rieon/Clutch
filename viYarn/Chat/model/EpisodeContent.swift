@@ -25,7 +25,6 @@ extension EpisodeContent {
         
     
         var arrMessages = [(author: String, messages: [String])]()
-        var currentAuthorMessages = [String]()
         for element in elements {
             
             switch element.tagName() {
@@ -34,15 +33,13 @@ extension EpisodeContent {
                 if let last =  arrMessages.last {
                     if nameAuthor != last.author{
                         arrMessages.append((nameAuthor, []))
-                        currentAuthorMessages.removeAll()
                     }
                 } else{
                     arrMessages.append((nameAuthor, []))
                 }
             case "span":
                 guard let message = try? element.text() else { return nil }
-                currentAuthorMessages.append(message)
-                arrMessages[arrMessages.count - 1].messages = currentAuthorMessages
+                arrMessages[arrMessages.count - 1].messages.append(message)
             default:
                 continue
                 

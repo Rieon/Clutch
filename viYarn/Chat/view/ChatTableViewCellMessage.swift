@@ -8,9 +8,13 @@
 
 import UIKit
 
-class ChatTableViewCell: UITableViewCell {
+protocol ChatViewCell {
+    func configured(with chatElement: ChatElement, isAuthor: Bool)
+}
 
-    static let cellID = "chat"
+class ChatTableViewCellMessage: UITableViewCell, ChatViewCell {
+
+    static let cellID = "cellMessage"
     
     var leadingBubbleConstrain: NSLayoutConstraint!
     var trailingBubbleConstrain: NSLayoutConstraint!
@@ -46,7 +50,9 @@ class ChatTableViewCell: UITableViewCell {
         
         bubbleView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
         bubbleView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16).isActive = true
-        bubbleView.widthAnchor.constraint(lessThanOrEqualToConstant: 250).isActive = true
+        let widthBubbleConstrain = bubbleView.widthAnchor.constraint(lessThanOrEqualToConstant: 250)
+        widthBubbleConstrain.priority = .defaultHigh
+        widthBubbleConstrain.isActive = true
         
         bubbleView.addSubview(txtMessage)
         
@@ -58,9 +64,9 @@ class ChatTableViewCell: UITableViewCell {
         leadingBubbleConstrain = bubbleView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
         trailingBubbleConstrain = bubbleView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
     }
-    func configured(message: String) -> ChatTableViewCell {
-        txtMessage.text = message
-        return self
+    func configured(with chatElement: ChatElement, isAuthor: Bool) {
+        txtMessage.text = chatElement.message
+        self.isAuthor = isAuthor
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -23,7 +23,8 @@ class ChatTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.register(ChatTableViewCell.self, forCellReuseIdentifier: ChatTableViewCell.cellID)
+        tableView.register(ChatTableViewCellImage.self, forCellReuseIdentifier: ChatTableViewCellImage.cellID)
+        tableView.register(ChatTableViewCellMessage.self, forCellReuseIdentifier: ChatTableViewCellMessage.cellID)
         tableView.separatorStyle = .none
     }
 
@@ -44,11 +45,14 @@ class ChatTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ChatTableViewCell.cellID, for: indexPath) as? ChatTableViewCell else {
-            return UITableViewCell()
+        let chatElement = loadedEpisodeContent.chatMessages[indexPath.section].messages[indexPath.row]
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: chatElement.cellID, for: indexPath)
+        if let configurableCell = cell as? ChatViewCell {
+            let isAuthor = indexPath.section % 2 == 0
+            configurableCell.configured(with: chatElement, isAuthor: isAuthor)
         }
-        cell.isAuthor = indexPath.section % 2 == 0
-        return cell.configured(message: loadedEpisodeContent.chatMessages[indexPath.section].messages[indexPath.row])
+        return cell
     }
  
 

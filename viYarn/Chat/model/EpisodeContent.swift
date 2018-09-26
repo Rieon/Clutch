@@ -10,9 +10,15 @@ import Foundation
 import SwiftSoup
 
 struct EpisodeContent {
-    let chatMessages: [(author: String, messages: [String])]
+    let chatMessages: [(author: String, messages: [ChatElement])]
     let episodeDescription:String
 }
+struct ChatElement {
+    let message: String
+    let tag: String
+    let cellID: String
+}
+
 
 extension EpisodeContent {
     init? (html: String) {
@@ -24,7 +30,7 @@ extension EpisodeContent {
         guard let episodeDescription  = try? elementDesc.text() else { return nil }
         
     
-        var arrMessages = [(author: String, messages: [String])]()
+        var arrMessages = [(author: String, messages: [ChatElement])]()
         for element in elements {
             
             switch element.tagName() {
@@ -39,7 +45,14 @@ extension EpisodeContent {
                 }
             case "span":
                 guard let message = try? element.text() else { return nil }
-                arrMessages[arrMessages.count - 1].messages.append(message)
+                let chatElement = ChatElement(message: message, tag: element.tagName(), cellID: ChatTableViewCellMessage.cellID)
+                arrMessages[arrMessages.count - 1].messages.append(chatElement)
+            case "img":
+                guard let elemImage = try? element.select("img[src]") else { return nil }
+                guard let message = try? elemImage.attr("src") else { return nil }
+                let chatElement = ChatElement(message: message, tag: element.tagName(), cellID: ChatTableViewCellImage.cellID)
+                arrMessages[arrMessages.count - 1].messages.append(chatElement)
+
             default:
                 continue
                 

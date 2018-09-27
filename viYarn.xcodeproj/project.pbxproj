@@ -18,6 +18,7 @@
 		0A038AB6215BF354000975E8 /* ChatTableViewCellImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A038AB5215BF354000975E8 /* ChatTableViewCellImage.swift */; };
 		0A2BCCE42156CC96008EE0CF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2BCCE32156CC96008EE0CF /* Alamofire.framework */; };
 		0A37F5F221554F6A00FEA557 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5F121554F6A00FEA557 /* Story.swift */; };
+		0A7221C4215CEC21008D146B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7221C3215CEC21008D146B /* Category.swift */; };
 		0AED5D70214A80B2008AF775 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5D6F214A80B2008AF775 /* AppDelegate.swift */; };
 		0AED5D78214A80B3008AF775 /* viYarn.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5D76214A80B3008AF775 /* viYarn.xcdatamodeld */; };
 		0AED5D7A214A80B9008AF775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AED5D79214A80B9008AF775 /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 		0A038AB5215BF354000975E8 /* ChatTableViewCellImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCellImage.swift; sourceTree = "<group>"; };
 		0A2BCCE32156CC96008EE0CF /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		0A37F5F121554F6A00FEA557 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		0A7221C3215CEC21008D146B /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		0AED5D6C214A80B2008AF775 /* viYarn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = viYarn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AED5D6F214A80B2008AF775 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AED5D77214A80B3008AF775 /* viYarn.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = viYarn.xcdatamodel; sourceTree = "<group>"; };
@@ -173,6 +175,22 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		0A7221C1215CEBF9008D146B /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				0A7221C2215CEC09008D146B /* model */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		0A7221C2215CEC09008D146B /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0A7221C3215CEC21008D146B /* Category.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		0AED5D63214A80B2008AF775 = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +215,7 @@
 		0AED5D6E214A80B2008AF775 /* viYarn */ = {
 			isa = PBXGroup;
 			children = (
+				0A7221C1215CEBF9008D146B /* Category */,
 				0A038A9E2158FD90000975E8 /* Chat */,
 				0A038A922157EB31000975E8 /* manager */,
 				9C25B1282155541000013D49 /* Coordinator */,
@@ -439,6 +458,7 @@
 				0AED5DA6214A816C008AF775 /* EpisodeTableViewCell.swift in Sources */,
 				0A038AA32158FDB1000975E8 /* ChatTableViewCellMessage.swift in Sources */,
 				0AED5DB1214AB9E3008AF775 /* ProgressBarView.swift in Sources */,
+				0A7221C4215CEC21008D146B /* Category.swift in Sources */,
 				0A009E7221577D6500792A9D /* Author.swift in Sources */,
 				0AED5D70214A80B2008AF775 /* AppDelegate.swift in Sources */,
 				0A038AA22158FDB1000975E8 /* ChatTableViewController.swift in Sources */,

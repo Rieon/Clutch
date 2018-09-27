@@ -21,6 +21,7 @@ class StoryViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     var stories = [Story]()
+    let category: Category
     let didTapEpisode: (Int) -> Void
     
     lazy var storyCollectionView: UICollectionView = {
@@ -35,7 +36,8 @@ class StoryViewController: UIViewController, UICollectionViewDelegate, UICollect
         return collection
     }()
     
-    init(didTapEpisode: @escaping (Int) -> Void) {
+    init(category: Category, didTapEpisode: @escaping (Int) -> Void) {
+        self.category = category
         self.didTapEpisode = didTapEpisode
         super.init(nibName: nil, bundle: nil)
     }
@@ -52,7 +54,7 @@ class StoryViewController: UIViewController, UICollectionViewDelegate, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadEpisode(categoryID: 2, didLoad: loadStoryByCategory, failLoad: failLoadStory)
+        loadStoriesForCategory(category, didLoad: loadStoryByCategory, failLoad: failLoadStory)
         
         view.addSubview(storyCollectionView)
         storyCollectionView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
@@ -73,9 +75,8 @@ class StoryViewController: UIViewController, UICollectionViewDelegate, UICollect
         return UICollectionViewCell()
     }
     
-    func loadEpisode(categoryID: Int, didLoad: @escaping () -> Void, failLoad: @escaping (Error) -> Void) {
-        APIClient.instance.request(forID: categoryID, typeRequest: .getStory, typePost: .story, success: { [unowned self] (loadedStory) in
-            
+    func loadStoriesForCategory(_ category: Category, didLoad: @escaping () -> Void, failLoad: @escaping (Error) -> Void) {
+        APIClient.instance.request(forID: category.id, typeRequest: .getStory, typePost: .story, success: { [unowned self] (loadedStory) in
             guard let postsJson = loadedStory["posts"] as? [[String : Any]] else {
                 return failLoad(ParsingError.wrongData)
             }

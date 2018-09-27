@@ -11,6 +11,8 @@ import UIKit
 class ChatTableViewController: UITableViewController {
 
     let loadedEpisodeContent: EpisodeContent
+    var chatMessage = [ChatElement]()
+    
     init(loadedEpisodeContent: EpisodeContent) {
         self.loadedEpisodeContent = loadedEpisodeContent
         super.init(nibName: nil, bundle: nil)
@@ -19,24 +21,37 @@ class ChatTableViewController: UITableViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       
         tableView.register(ChatTableViewCellImage.self, forCellReuseIdentifier: ChatTableViewCellImage.cellID)
         tableView.register(ChatTableViewCellMessage.self, forCellReuseIdentifier: ChatTableViewCellMessage.cellID)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTapChat(recognizer:)))
+        self.view.addGestureRecognizer(tapGesture)
+        self.navigationItem.title = loadedEpisodeContent.episodeDescription
         tableView.separatorStyle = .none
     }
-
+    
+    @objc func handleTapChat(recognizer : UITapGestureRecognizer) {
+        
+        if chatMessage.count < loadedEpisodeContent.chatMessages.count {
+            chatMessage.append(loadedEpisodeContent.chatMessages[chatMessage.count])
+            let indexRow = IndexPath(row: chatMessage.count - 1, section: 0)
+            tableView.insertRows(at: [indexRow], with: .automatic)
+            tableView.scrollToRow(at: indexRow, at: .bottom, animated: true)
+        } else {
+            print("chat end")
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return loadedEpisodeContent.chatMessages.count
+        return chatMessage.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let chatElement = loadedEpisodeContent.chatMessages[indexPath.row]
+        let chatElement = chatMessage[indexPath.row]
 
         let cell = tableView.dequeueReusableCell(withIdentifier: chatElement.cellID, for: indexPath)
         if let configurableCell = cell as? ChatViewCell {

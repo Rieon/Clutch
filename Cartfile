@@ -1,3 +1,6 @@
 github "Alamofire/Alamofire" ~> 4.7
 github "scinfu/SwiftSoup"
 github "Alamofire/AlamofireImage" ~> 3.4
+
+binary "https://building42.github.io/Specs/Carthage/iOS/Fabric.json"
+binary "https://building42.github.io/Specs/Carthage/iOS/Crashlytics.json"

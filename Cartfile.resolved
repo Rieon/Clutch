@@ -1,3 +1,5 @@
+binary "https://building42.github.io/Specs/Carthage/iOS/Crashlytics.json" "3.10.7"
+binary "https://building42.github.io/Specs/Carthage/iOS/Fabric.json" "1.7.11"
 github "Alamofire/Alamofire" "4.7.3"
 github "Alamofire/AlamofireImage" "3.4.1"
 github "scinfu/SwiftSoup" "1.7.4"

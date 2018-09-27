@@ -32,7 +32,7 @@ extension EpisodeContent {
         guard let elementDesc = episodeDescriptionElement else { return nil }
         guard let episodeDescription  = try? elementDesc.text() else { return nil }
         
-        var tempAuthor = "[Nicole]"
+        let tempAuthor = "[Nicole]"
         
         var chatMessages = [ChatElement]()
         var lastAuthorName: String = ""

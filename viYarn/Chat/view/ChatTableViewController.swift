@@ -11,7 +11,7 @@ import UIKit
 class ChatTableViewController: UITableViewController {
 
     let loadedEpisodeContent: EpisodeContent
-    var chatMessage = [ChatElement]()
+    var messages = [ChatElement]()
     
     init(loadedEpisodeContent: EpisodeContent) {
         self.loadedEpisodeContent = loadedEpisodeContent
@@ -34,9 +34,9 @@ class ChatTableViewController: UITableViewController {
     
     @objc func handleTapChat(recognizer : UITapGestureRecognizer) {
         
-        if chatMessage.count < loadedEpisodeContent.chatMessages.count {
-            chatMessage.append(loadedEpisodeContent.chatMessages[chatMessage.count])
-            let indexRow = IndexPath(row: chatMessage.count - 1, section: 0)
+        if messages.count < loadedEpisodeContent.chatMessages.count {
+            messages.append(loadedEpisodeContent.chatMessages[messages.count])
+            let indexRow = IndexPath(row: messages.count - 1, section: 0)
             tableView.insertRows(at: [indexRow], with: .automatic)
             tableView.scrollToRow(at: indexRow, at: .bottom, animated: true)
         } else {
@@ -47,11 +47,11 @@ class ChatTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chatMessage.count
+        return messages.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let chatElement = chatMessage[indexPath.row]
+        let chatElement = messages[indexPath.row]
 
         let cell = tableView.dequeueReusableCell(withIdentifier: chatElement.cellID, for: indexPath)
         if let configurableCell = cell as? ChatViewCell {

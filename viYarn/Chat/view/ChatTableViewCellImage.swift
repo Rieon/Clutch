@@ -14,8 +14,8 @@ class ChatTableViewCellImage: UITableViewCell, ChatViewCell {
     
     static let cellID = "cellImage"
     
-    var leadingBubbleConstrain: NSLayoutConstraint!
-    var trailingBubbleConstrain: NSLayoutConstraint!
+    var leadingBubbleConstrain: NSLayoutConstraint?
+    var trailingBubbleConstrain: NSLayoutConstraint?
     
     let imgChat: UIImageView = {
         let image = UIImageView()
@@ -34,16 +34,10 @@ class ChatTableViewCellImage: UITableViewCell, ChatViewCell {
         return view
     }()
     
-    var isAuthor: Bool! {
-        didSet{
-            bubbleView.backgroundColor = isAuthor == true ? UIColor.lightGray : UIColor.darkGray
-            leadingBubbleConstrain.isActive = !isAuthor
-            trailingBubbleConstrain.isActive = isAuthor
-        }
-    }
     let sizeImage = CGSize(width: 200, height: 250)
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubview(bubbleView)
         
@@ -66,11 +60,13 @@ class ChatTableViewCellImage: UITableViewCell, ChatViewCell {
         trailingBubbleConstrain = bubbleView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
     }
     
-    func configured(with chatElement: ChatElement, isAuthor: Bool) {
+    func configured(with chatElement: ChatElement) {
         if let url = URL(string: chatElement.message) {
             imgChat.af_setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "placeholder"))
         }
-        self.isAuthor = isAuthor
+        bubbleView.backgroundColor = chatElement.isAuthor ? UIColor.lightGray : UIColor.darkGray
+        leadingBubbleConstrain?.isActive = !chatElement.isAuthor
+        trailingBubbleConstrain?.isActive = chatElement.isAuthor
     }
     
     required init?(coder aDecoder: NSCoder) {

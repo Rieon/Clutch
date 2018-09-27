@@ -31,26 +31,16 @@ class ChatTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return loadedEpisodeContent.chatMessages.count
     }
     
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return loadedEpisodeContent.chatMessages[section].messages.count
-    }
-
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return loadedEpisodeContent.chatMessages[section].author
-    }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let chatElement = loadedEpisodeContent.chatMessages[indexPath.section].messages[indexPath.row]
+        let chatElement = loadedEpisodeContent.chatMessages[indexPath.row]
 
         let cell = tableView.dequeueReusableCell(withIdentifier: chatElement.cellID, for: indexPath)
         if let configurableCell = cell as? ChatViewCell {
-            let isAuthor = indexPath.section % 2 == 0
-            configurableCell.configured(with: chatElement, isAuthor: isAuthor)
+            configurableCell.configured(with: chatElement)
         }
         return cell
     }

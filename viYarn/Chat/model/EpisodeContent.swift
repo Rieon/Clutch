@@ -10,13 +10,16 @@ import Foundation
 import SwiftSoup
 
 struct EpisodeContent {
-    let chatMessages: [(author: String, messages: [ChatElement])]
-    let episodeDescription:String
+    let chatMessages: [ChatElement]
+    let episodeDescription: String
 }
 struct ChatElement {
+    let author: String
     let message: String
+    let isAuthor: Bool
     let tag: String
     let cellID: String
+    
 }
 
 
@@ -29,36 +32,33 @@ extension EpisodeContent {
         guard let elementDesc = episodeDescriptionElement else { return nil }
         guard let episodeDescription  = try? elementDesc.text() else { return nil }
         
-    
-        var arrMessages = [(author: String, messages: [ChatElement])]()
+        var tempAuthor = "[Nicole]"
+        
+        var chatMessages = [ChatElement]()
+        var lastAuthorName: String = ""
         for element in elements {
-            
-            switch element.tagName() {
+            let tagName = element.tagName()
+            switch tagName {
             case "b":
-                guard let nameAuthor = try? element.text() else { return nil }
-                if let last =  arrMessages.last {
-                    if nameAuthor != last.author{
-                        arrMessages.append((nameAuthor, []))
-                    }
-                } else{
-                    arrMessages.append((nameAuthor, []))
+                guard let author = try? element.text() else { return nil }
+                if author.count > 0 {
+                    lastAuthorName = author
                 }
             case "span":
                 guard let message = try? element.text() else { return nil }
-                let chatElement = ChatElement(message: message, tag: element.tagName(), cellID: ChatTableViewCellMessage.cellID)
-                arrMessages[arrMessages.count - 1].messages.append(chatElement)
+                chatMessages.append(ChatElement(author: lastAuthorName, message: message, isAuthor: tempAuthor == lastAuthorName,  tag: tagName, cellID: ChatTableViewCellMessage.cellID))
             case "img":
                 guard let elemImage = try? element.select("img[src]") else { return nil }
                 guard let message = try? elemImage.attr("src") else { return nil }
-                let chatElement = ChatElement(message: message, tag: element.tagName(), cellID: ChatTableViewCellImage.cellID)
-                arrMessages[arrMessages.count - 1].messages.append(chatElement)
+                chatMessages.append(ChatElement(author: lastAuthorName, message: message, isAuthor: tempAuthor == lastAuthorName, tag: tagName, cellID: ChatTableViewCellImage.cellID))
 
             default:
                 continue
-                
             }
         }
-        self.init(chatMessages: arrMessages, episodeDescription: episodeDescription)
+        print(chatMessages.count)
+        
+        self.init(chatMessages: chatMessages, episodeDescription: episodeDescription)
     }
     
     

@@ -25,8 +25,8 @@ extension Episode {
         guard let type = json["type"] as? String else { return nil }
         guard let status = json["status"] as? String else { return nil }
         guard let title = json["title"] as? String else { return nil }
-        guard let contentHtml = json["content"] as? String else { return nil }
-        guard let content = EpisodeContent(html: contentHtml) else { return nil }
+        guard let contentMessages = json["messages"] as? [[String: Any]] else { return nil }
+        guard let content = EpisodeContent(arrJson: contentMessages) else { return nil }
         guard let jsonAuthor = json["author"] as? [String: Any] else { return nil }
         guard let author = Author(json: jsonAuthor) else { return nil }
         

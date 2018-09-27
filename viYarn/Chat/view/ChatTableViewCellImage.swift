@@ -12,7 +12,7 @@ import UIKit
 
 class ChatTableViewCellImage: UITableViewCell, ChatViewCell {
     
-    static let cellID = "cellImage"
+    static let cellID = "cellimage"
     
     var leadingBubbleConstrain: NSLayoutConstraint?
     var trailingBubbleConstrain: NSLayoutConstraint?

@@ -53,7 +53,7 @@ class ChatTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chatElement = messages[indexPath.row]
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: chatElement.cellID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell\(chatElement.type)", for: indexPath)
         if let configurableCell = cell as? ChatViewCell {
             configurableCell.configured(with: chatElement)
         }

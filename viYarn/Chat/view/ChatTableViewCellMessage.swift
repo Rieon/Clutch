@@ -14,7 +14,7 @@ protocol ChatViewCell {
 
 class ChatTableViewCellMessage: UITableViewCell, ChatViewCell {
 
-    static let cellID = "cellMessage"
+    static let cellID = "celltext"
     
     var leadingBubbleConstrain: NSLayoutConstraint?
     var trailingBubbleConstrain: NSLayoutConstraint?

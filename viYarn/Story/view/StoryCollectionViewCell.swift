@@ -194,7 +194,7 @@ class StoryCollectionViewCell: UICollectionViewCell {
         txtTitle.text = story.title
         txtEpisode.text = "Episode 1"
         txtDate.text = story.date
-        txtDesc.text = story.postContent
+        txtDesc.text = story.content
         txtTitleProgress.text = "Start Episode 1"
         
         if let url = URL(string: story.urlImageMedium) {

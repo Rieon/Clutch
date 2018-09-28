@@ -10,11 +10,13 @@ import UIKit
 
 class ChatTableViewController: UITableViewController {
 
-    let loadedEpisodeContent: EpisodeContent
+    let loadedEpisodeContent: [ChatElement]
+    let descriptionEpisode: String
     var messages = [ChatElement]()
     
-    init(loadedEpisodeContent: EpisodeContent) {
+    init(loadedEpisodeContent: [ChatElement], descriptionEpisode: String) {
         self.loadedEpisodeContent = loadedEpisodeContent
+        self.descriptionEpisode = descriptionEpisode
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -28,14 +30,14 @@ class ChatTableViewController: UITableViewController {
         tableView.register(ChatTableViewCellMessage.self, forCellReuseIdentifier: ChatTableViewCellMessage.cellID)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTapChat(recognizer:)))
         self.view.addGestureRecognizer(tapGesture)
-        self.navigationItem.title = loadedEpisodeContent.episodeDescription
+        self.navigationItem.title = descriptionEpisode
         tableView.separatorStyle = .none
     }
     
     @objc func handleTapChat(recognizer : UITapGestureRecognizer) {
         
-        if messages.count < loadedEpisodeContent.chatMessages.count {
-            messages.append(loadedEpisodeContent.chatMessages[messages.count])
+        if messages.count < loadedEpisodeContent.count {
+            messages.append(loadedEpisodeContent[messages.count])
             let indexRow = IndexPath(row: messages.count - 1, section: 0)
             tableView.insertRows(at: [indexRow], with: .automatic)
             tableView.scrollToRow(at: indexRow, at: .bottom, animated: true)

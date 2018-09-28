@@ -14,7 +14,6 @@
 		0A038AA32158FDB1000975E8 /* ChatTableViewCellMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A038AA12158FDB1000975E8 /* ChatTableViewCellMessage.swift */; };
 		0A038AA521596031000975E8 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A038AA421596031000975E8 /* SwiftSoup.framework */; };
 		0A038AA72159814E000975E8 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A038AA62159814E000975E8 /* AlamofireImage.framework */; };
-		0A038AB0215A53B9000975E8 /* EpisodeContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A038AAF215A53B9000975E8 /* EpisodeContent.swift */; };
 		0A038AB6215BF354000975E8 /* ChatTableViewCellImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A038AB5215BF354000975E8 /* ChatTableViewCellImage.swift */; };
 		0A2BCCE42156CC96008EE0CF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2BCCE32156CC96008EE0CF /* Alamofire.framework */; };
 		0A37F5F221554F6A00FEA557 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5F121554F6A00FEA557 /* Story.swift */; };
@@ -59,7 +58,6 @@
 		0A038AA12158FDB1000975E8 /* ChatTableViewCellMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCellMessage.swift; sourceTree = "<group>"; };
 		0A038AA421596031000975E8 /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
 		0A038AA62159814E000975E8 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
-		0A038AAF215A53B9000975E8 /* EpisodeContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeContent.swift; sourceTree = "<group>"; };
 		0A038AB5215BF354000975E8 /* ChatTableViewCellImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCellImage.swift; sourceTree = "<group>"; };
 		0A2BCCE32156CC96008EE0CF /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		0A37F5F121554F6A00FEA557 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 		0A038AAE215A53A8000975E8 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				0A038AAF215A53B9000975E8 /* EpisodeContent.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -449,7 +446,6 @@
 				0AED5DAF214AB6B2008AF775 /* CircleButton.swift in Sources */,
 				0A038A942157EB72000975E8 /* APIClient.swift in Sources */,
 				0AED5D78214A80B3008AF775 /* viYarn.xcdatamodeld in Sources */,
-				0A038AB0215A53B9000975E8 /* EpisodeContent.swift in Sources */,
 				0A038AB6215BF354000975E8 /* ChatTableViewCellImage.swift in Sources */,
 				0AED5DB9214C4450008AF775 /* StoryViewController.swift in Sources */,
 				0AED5DBE214D7C49008AF775 /* StoryCollectionViewCell.swift in Sources */,

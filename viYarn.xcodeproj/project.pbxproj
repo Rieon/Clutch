@@ -21,6 +21,8 @@
 		0AC084E5215E814600E68730 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC084E3215E814500E68730 /* Crashlytics.framework */; };
 		0AC084E6215E814600E68730 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC084E4215E814600E68730 /* Fabric.framework */; };
 		0AC084ED215E841F00E68730 /* MainScreenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC084EC215E841F00E68730 /* MainScreenTableViewController.swift */; };
+		0AC084EF215E8AA200E68730 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC084EE215E8AA200E68730 /* CategoryTableViewCell.swift */; };
+		0AC084F1215E8DF500E68730 /* StoryCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC084F0215E8DF500E68730 /* StoryCategoryTableViewCell.swift */; };
 		0AED5D70214A80B2008AF775 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5D6F214A80B2008AF775 /* AppDelegate.swift */; };
 		0AED5D78214A80B3008AF775 /* viYarn.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5D76214A80B3008AF775 /* viYarn.xcdatamodeld */; };
 		0AED5D7A214A80B9008AF775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AED5D79214A80B9008AF775 /* Assets.xcassets */; };
@@ -68,6 +70,8 @@
 		0AC084E3215E814500E68730 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Carthage/Build/iOS/Crashlytics.framework; sourceTree = "<group>"; };
 		0AC084E4215E814600E68730 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Carthage/Build/iOS/Fabric.framework; sourceTree = "<group>"; };
 		0AC084EC215E841F00E68730 /* MainScreenTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenTableViewController.swift; sourceTree = "<group>"; };
+		0AC084EE215E8AA200E68730 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		0AC084F0215E8DF500E68730 /* StoryCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		0AED5D6C214A80B2008AF775 /* viYarn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = viYarn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AED5D6F214A80B2008AF775 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AED5D77214A80B3008AF775 /* viYarn.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = viYarn.xcdatamodel; sourceTree = "<group>"; };
@@ -211,6 +215,8 @@
 			isa = PBXGroup;
 			children = (
 				0AC084EC215E841F00E68730 /* MainScreenTableViewController.swift */,
+				0AC084EE215E8AA200E68730 /* CategoryTableViewCell.swift */,
+				0AC084F0215E8DF500E68730 /* StoryCategoryTableViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -510,6 +516,8 @@
 				0AED5DA6214A816C008AF775 /* EpisodeTableViewCell.swift in Sources */,
 				0A038AA32158FDB1000975E8 /* ChatTableViewCellMessage.swift in Sources */,
 				0AED5DB1214AB9E3008AF775 /* ProgressBarView.swift in Sources */,
+				0AC084F1215E8DF500E68730 /* StoryCategoryTableViewCell.swift in Sources */,
+				0AC084EF215E8AA200E68730 /* CategoryTableViewCell.swift in Sources */,
 				0A7221C4215CEC21008D146B /* Category.swift in Sources */,
 				0A009E7221577D6500792A9D /* Author.swift in Sources */,
 				0AED5D70214A80B2008AF775 /* AppDelegate.swift in Sources */,

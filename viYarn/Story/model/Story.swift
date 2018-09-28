@@ -15,7 +15,7 @@ struct Story {
     let title: String
     let content: String
     let date: String
-    let urlImageMedium: String
+    let urlImage: String
     
 }
 
@@ -29,13 +29,13 @@ extension Story{
         guard let content = try? doc.select("p").first()?.text() else { return nil }
         
         guard let date = json["date"] as? String else { return nil }
-        var urlImageMedium = ""
+        var urlImage = ""
         if let jsonImages = json["thumbnail_images"] as? [String: Any] {
-            if let jsonImageMedium = jsonImages["medium_large"] as? [String: Any] {
-                urlImageMedium = jsonImageMedium["url"] as? String ?? ""
+            if let jsonImageMedium = jsonImages["full"] as? [String: Any] {
+                urlImage = jsonImageMedium["url"] as? String ?? ""
             }
         }
-        self.init(id: id, title: title, content: content ?? "", date: date, urlImageMedium: urlImageMedium)
+        self.init(id: id, title: title, content: content ?? "", date: date, urlImage: urlImage)
         
     }
 }

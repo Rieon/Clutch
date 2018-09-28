@@ -18,6 +18,7 @@ class StoryCollectionViewCell: UICollectionViewCell {
     let imgPreview: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFill
         return image
     }()
     let txtCountView: UILabel = {
@@ -197,7 +198,7 @@ class StoryCollectionViewCell: UICollectionViewCell {
         txtDesc.text = story.content
         txtTitleProgress.text = "Start Episode 1"
         
-        if let url = URL(string: story.urlImageMedium) {
+        if let url = URL(string: story.urlImage) {
             self.imgPreview.af_setImage(withURL: url)
         }
         

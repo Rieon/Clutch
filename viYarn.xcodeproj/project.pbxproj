@@ -18,6 +18,8 @@
 		0A2BCCE42156CC96008EE0CF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2BCCE32156CC96008EE0CF /* Alamofire.framework */; };
 		0A37F5F221554F6A00FEA557 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F5F121554F6A00FEA557 /* Story.swift */; };
 		0A7221C4215CEC21008D146B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7221C3215CEC21008D146B /* Category.swift */; };
+		0AC084E5215E814600E68730 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC084E3215E814500E68730 /* Crashlytics.framework */; };
+		0AC084E6215E814600E68730 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC084E4215E814600E68730 /* Fabric.framework */; };
 		0AED5D70214A80B2008AF775 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5D6F214A80B2008AF775 /* AppDelegate.swift */; };
 		0AED5D78214A80B3008AF775 /* viYarn.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0AED5D76214A80B3008AF775 /* viYarn.xcdatamodeld */; };
 		0AED5D7A214A80B9008AF775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AED5D79214A80B9008AF775 /* Assets.xcassets */; };
@@ -62,6 +64,8 @@
 		0A2BCCE32156CC96008EE0CF /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		0A37F5F121554F6A00FEA557 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		0A7221C3215CEC21008D146B /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		0AC084E3215E814500E68730 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Carthage/Build/iOS/Crashlytics.framework; sourceTree = "<group>"; };
+		0AC084E4215E814600E68730 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Carthage/Build/iOS/Fabric.framework; sourceTree = "<group>"; };
 		0AED5D6C214A80B2008AF775 /* viYarn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = viYarn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AED5D6F214A80B2008AF775 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AED5D77214A80B3008AF775 /* viYarn.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = viYarn.xcdatamodel; sourceTree = "<group>"; };
@@ -90,6 +94,8 @@
 			files = (
 				0A2BCCE42156CC96008EE0CF /* Alamofire.framework in Frameworks */,
 				0A038AA521596031000975E8 /* SwiftSoup.framework in Frameworks */,
+				0AC084E5215E814600E68730 /* Crashlytics.framework in Frameworks */,
+				0AC084E6215E814600E68730 /* Fabric.framework in Frameworks */,
 				0A038AA72159814E000975E8 /* AlamofireImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,6 +154,8 @@
 		0A2BCCE22156CC96008EE0CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0AC084E3215E814500E68730 /* Crashlytics.framework */,
+				0AC084E4215E814600E68730 /* Fabric.framework */,
 				0A038AA62159814E000975E8 /* AlamofireImage.framework */,
 				0A038AA421596031000975E8 /* SwiftSoup.framework */,
 				0A2BCCE32156CC96008EE0CF /* Alamofire.framework */,
@@ -302,6 +310,7 @@
 				0AED5D69214A80B2008AF775 /* Frameworks */,
 				0AED5D6A214A80B2008AF775 /* Resources */,
 				0A2BCCE52156CCA7008EE0CF /* ShellScript */,
+				0AC084E7215E820A00E68730 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -427,12 +436,31 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftSoup.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Crashlytics.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Fabric.framework",
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		0AC084E7215E820A00E68730 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run c6123d20992494b2f9f2f0f533f40d4f3c25a665 767ac480fa6cafedc246c08bf6dbb7fa65ef237eec31331e834e942a2a97ec4a\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

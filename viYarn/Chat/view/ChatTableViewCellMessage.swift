@@ -14,7 +14,7 @@ protocol ChatViewCell {
 
 class ChatTableViewCellMessage: UITableViewCell, ChatViewCell {
 
-    static let cellID = "cellMessage"
+    static let cellID = "celltext"
     
     var leadingBubbleConstrain: NSLayoutConstraint?
     var trailingBubbleConstrain: NSLayoutConstraint?
@@ -45,12 +45,13 @@ class ChatTableViewCellMessage: UITableViewCell, ChatViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        addSubview(bubbleView)
         addSubview(txtNameAuthor)
         txtNameAuthor.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
-        txtNameAuthor.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8).isActive = true
+        txtNameAuthor.leadingAnchor.constraint(equalTo: bubbleView.leadingAnchor, constant: 0).isActive = true
+        txtNameAuthor.trailingAnchor.constraint(equalTo: bubbleView.trailingAnchor, constant: 0).isActive = true
         txtNameAuthor.heightAnchor.constraint(equalToConstant: 15).isActive = true
         
-        addSubview(bubbleView)
         
         bubbleView.topAnchor.constraint(equalTo: txtNameAuthor.bottomAnchor, constant: 5).isActive = true
         bubbleView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16).isActive = true
@@ -72,8 +73,8 @@ class ChatTableViewCellMessage: UITableViewCell, ChatViewCell {
         txtMessage.text = chatElement.message
         txtNameAuthor.text = chatElement.author
         
-        bubbleView.backgroundColor = chatElement.isAuthor ? UIColor.lightGray : UIColor.darkGray
-        txtMessage.textColor = chatElement.isAuthor ? UIColor.black : UIColor.white
+        bubbleView.backgroundColor = chatElement.isAuthor ? UIColor.blue : #colorLiteral(red: 0.9254901961, green: 0.9254901961, blue: 0.9254901961, alpha: 1)
+        txtMessage.textColor = chatElement.isAuthor ? UIColor.white : UIColor.black
         leadingBubbleConstrain?.isActive = !chatElement.isAuthor
         trailingBubbleConstrain?.isActive = chatElement.isAuthor
     }

@@ -12,7 +12,7 @@ class EpisodeViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var episodes = [Episode]()
     let loadStoryID: Int
-    let didTapEpisode: (EpisodeContent) -> Void
+    let didTapEpisode: ([ChatElement], String) -> Void
     
     lazy var episodesTableView: UITableView = {
         let table = UITableView()
@@ -26,7 +26,7 @@ class EpisodeViewController: UIViewController, UITableViewDelegate, UITableViewD
         return table
     }()
     
-    init(loadStoryID: Int, didTapEpisode: @escaping (EpisodeContent) -> Void) {
+    init(loadStoryID: Int, didTapEpisode: @escaping ([ChatElement], String) -> Void) {
         self.loadStoryID = loadStoryID
         self.didTapEpisode = didTapEpisode
         super.init(nibName: nil, bundle: nil)
@@ -83,7 +83,7 @@ class EpisodeViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.didTapEpisode(episodes[indexPath.row].content)
+        self.didTapEpisode(episodes[indexPath.row].messages, episodes[indexPath.row].description)
     }
     func didLoadEpisodes() {
         episodesTableView.reloadData()
